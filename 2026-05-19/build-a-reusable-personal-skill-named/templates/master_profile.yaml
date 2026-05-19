@@ -1,0 +1,169 @@
+candidate:
+  name: Javon Edwards
+  location: Miami, Florida
+  target_voice:
+    - professional
+    - direct
+    - clear
+    - warm
+    - not buzzword-heavy
+    - not over-polished
+    - not obviously AI-written
+  current_position:
+    title: Cyber, Risk & Regulatory Advisory Manager
+    employer: PwC
+  prior_employers:
+    - EY
+    - BNY Mellon Wealth Management
+    - JPMorgan Chase
+    - Movement Mortgage
+    - Harmony Healthcare
+  summary:
+    years_experience: "10+"
+    positioning: >
+      Miami-based cyber, risk, and regulatory advisory manager with experience across
+      enterprise risk, regulatory transformation, banking, compliance, audit remediation,
+      cybersecurity governance, operating model design, and financial services transformation.
+
+core_strengths:
+  enterprise_risk_and_controls:
+    - ERM
+    - RCSA
+    - KRIs
+    - issue management
+    - three lines of defense
+    - controls testing
+    - audit remediation
+  regulatory_remediation:
+    - SIFI and global banking client remediation
+    - MRA/MRIA-style work
+    - issue closure
+    - root cause analysis
+    - audit readiness
+    - regulatory transformation
+  regulatory_and_framework_knowledge:
+    - OCC
+    - FRB
+    - CFPB
+    - FDIC
+    - FFIEC
+    - NIST Cybersecurity Framework
+    - OCC Heightened Standards
+    - AML/KYC
+    - OFAC
+    - privacy
+    - financial crime
+    - regulatory mapping
+  ai_and_automation:
+    - AI/NLP/LLM regulatory mapping
+    - traceability
+    - workflow automation
+    - governance use cases
+  leadership:
+    - cross-functional leadership
+    - stakeholder management
+    - executive advisory
+    - CISO-facing work
+    - CRO-facing work
+    - project teams of 2-10
+  technology_collaboration:
+    - Agile collaboration with IT on Loan Origination System deployment at BNY Mellon
+    - procedure development
+    - user guidance
+
+experience_positioning:
+  pwc:
+    employer: PwC
+    title: Cyber, Risk & Regulatory Advisory Manager
+    use_for:
+      - cyber risk governance
+      - regulatory remediation
+      - audit readiness
+      - issue management
+      - financial services advisory
+      - executive stakeholder engagement
+    confidentiality_default: "Use anonymized client descriptions unless Javon approves client names."
+  ey:
+    employer: EY
+    use_for:
+      - consulting
+      - risk and regulatory transformation
+      - controls and compliance advisory
+  bny_mellon:
+    employer: BNY Mellon Wealth Management
+    use_for:
+      - wealth management risk and operations
+      - Agile IT collaboration
+      - Loan Origination System deployment support
+      - procedures and user guidance
+  jpmorgan_chase:
+    employer: JPMorgan Chase
+    use_for:
+      - banking operations
+      - financial services controls
+      - compliance and risk exposure
+  movement_mortgage:
+    employer: Movement Mortgage
+    use_for:
+      - mortgage operations
+      - lending compliance
+      - process and control awareness
+  harmony_healthcare:
+    employer: Harmony Healthcare
+    use_for:
+      - healthcare operations
+      - compliance exposure
+
+recent_ai_cloud_technical_training:
+  label_rule: "Use 'Recent AI, Cloud & Technical Training' or 'Professional Development'; do not label these as formal certifications unless Javon verifies certification status."
+  items:
+    - Automate Your Workflow with Custom GPTs
+    - Enterprise Architecture in Practice
+    - Building Agentic AI Systems
+    - Enhance Your Coaching Impact with Generative AI
+    - Building an AI Governance Program
+    - Building a Collaborative Team Culture with AI
+    - The Manager's Guide to Career Conversations in the Age of AI
+    - Amplify Your Critical Thinking with Generative AI
+    - Responsible AI for Managers
+    - Programming Foundations: Fundamentals
+    - AWS Certified Cloud Practitioner (CLF-C02) Cert Prep
+    - AI for Managers by Microsoft and LinkedIn
+
+confidentiality:
+  default_client_language:
+    - global banking client
+    - SIFI banking client
+    - large financial institution
+    - wealth management organization
+    - mortgage lender
+    - healthcare organization
+  named_clients_allowed_without_confirmation:
+    - PwC
+    - EY
+    - BNY Mellon Wealth Management
+    - JPMorgan Chase
+    - Movement Mortgage
+    - Harmony Healthcare
+  require_confirmation_for:
+    - PwC client names
+    - EY client names
+    - confidential client programs
+    - non-public regulatory matters
+
+fabrication_boundaries:
+  do_not_invent:
+    - certifications
+    - degrees
+    - exact metrics
+    - budgets
+    - direct client names
+    - tools
+    - programming languages
+    - security platforms
+    - job titles
+    - management scope beyond teams of 2-10
+  allowed_reframing:
+    - Translate known work into job-relevant language.
+    - Describe advisory work as advisory unless direct ownership is confirmed.
+    - Present training as training or professional development.
