@@ -1,6 +1,6 @@
 # No-Fabrication and Confidentiality Check
 
-Run before finalizing any resume, cover letter, message, interview prep, or STAR story.
+Run before finalizing any resume, cover letter, message, interview prep, STAR story, application answer, recruiter message, or job-board submission.
 
 ## Evidence Check
 
@@ -24,6 +24,10 @@ Do not invent:
 - Client names
 - Awards
 - Security clearances
+- Salary history or compensation expectations
+- Work authorization status
+- Relocation willingness
+- Reasons for leaving an employer
 
 ## Training Label Check
 
@@ -44,6 +48,13 @@ Do not invent:
   - healthcare organization
 - Direct employers in the master profile may be named.
 
+## Application Submission Check
+
+- Do not submit an application unless Javon approved the specific role/application package in the current workflow or explicitly enabled a narrow approved auto-submit mode.
+- Stop and ask Javon before answering legal attestations, EEO/disability/veteran questions, references, assessments, salary fields, sponsorship/work authorization fields, or conflict-related questions.
+- Do not imply Javon has reviewed or agreed to terms unless he has approved that action.
+- Do not save credentials, reuse account data, or change job-board profile settings unless Javon explicitly asks.
+
 ## Gap Analysis Check
 
 - Gaps are stated plainly and constructively.
@@ -62,4 +73,5 @@ No-Fabrication Gate:
 - Training labels: Pass / Needs revision - [reason]
 - Confidentiality: Pass / Needs revision - [reason]
 - Gap honesty: Pass / Needs revision - [reason]
+- Submission safety: Pass / Ask Javon - [reason]
 ```

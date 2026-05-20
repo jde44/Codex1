@@ -1,0 +1,114 @@
+default_search:
+  candidate: Javon Edwards
+  target_locations:
+    - Miami, FL
+    - Remote
+    - Hybrid roles with reasonable travel
+  target_industries:
+    - financial services
+    - banking
+    - fintech
+    - consulting
+    - regtech
+    - cybersecurity governance
+    - risk and compliance technology
+  trusted_sources:
+    - LinkedIn Jobs
+    - Indeed
+    - company career pages
+    - Built In
+    - Wellfound
+    - Otta / Welcome to the Jungle
+    - Dice
+    - eFinancialCareers
+    - risk and compliance job boards
+    - consulting firm career pages
+    - financial services career pages
+
+target_titles:
+  high_priority:
+    - Risk Advisory Manager
+    - Senior Manager Risk Advisory
+    - Regulatory Remediation Manager
+    - Regulatory Remediation Senior Manager
+    - Enterprise Risk Manager
+    - Cyber Risk Governance Manager
+    - AI Governance Manager
+    - Responsible AI Risk Manager
+    - Controls Testing Manager
+    - Issue Management Manager
+    - Audit Remediation Manager
+  adjacent:
+    - Financial Services Transformation Manager
+    - Risk and Controls Manager
+    - Compliance Transformation Manager
+    - Governance Risk and Compliance Manager
+    - Operational Risk Manager
+    - Regulatory Change Manager
+
+keywords:
+  must_prioritize:
+    - enterprise risk
+    - regulatory remediation
+    - issue management
+    - root cause analysis
+    - audit readiness
+    - RCSA
+    - KRI
+    - controls testing
+    - three lines of defense
+    - cyber risk governance
+    - financial services
+  strong_signals:
+    - OCC
+    - FRB
+    - CFPB
+    - FDIC
+    - FFIEC
+    - NIST CSF
+    - MRA
+    - MRIA
+    - SIFI
+    - AML/KYC
+    - OFAC
+    - AI governance
+    - regulatory mapping
+    - workflow automation
+
+fit_scoring:
+  role_alignment_points: 25
+  evidence_strength_points: 25
+  seniority_scope_points: 15
+  industry_domain_points: 15
+  location_remote_travel_points: 10
+  application_practicality_points: 10
+  high_fit_threshold: 85
+  good_fit_threshold: 70
+  watchlist_threshold: 55
+
+default_exclusions_or_conflicts:
+  ask_before_applying:
+    - current employer conflict
+    - prior employer sensitivity
+    - client or vendor conflict
+    - unclear compensation fit
+    - relocation requirement
+    - heavy travel requirement
+    - unverified certification requirement
+    - direct hands-on engineering requirement not evidenced
+    - sales quota ownership
+    - legal attestation
+    - references required before interview
+    - assessment required
+    - EEO, disability, veteran, or demographic questions
+  skip_unless_javon_approves:
+    - roles below manager level
+    - roles requiring unsupported programming ownership
+    - roles requiring active security clearance
+    - roles requiring relocation away from Miami without remote option
+    - roles centered on cold sales or commission-only compensation
+
+submission_policy:
+  default: "Prepare and ask for approval before submitting each application."
+  high_fit: "Recommend applying, but do not submit until Javon approves the role/application package."
+  approved_auto_submit_limitations: "If Javon enables approved auto-submit for a narrow search, still stop for conflicts, legal attestations, salary disclosures, EEO/disability/veteran questions, references, assessments, or missing required answers."
