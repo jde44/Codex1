@@ -1,6 +1,6 @@
 # Example Input
 
-Use `targeted-job-application-resume` for this role.
+Use `jobpilot` for this role.
 
 Job URL:
 https://example.com/jobs/senior-manager-risk-regulatory-remediation

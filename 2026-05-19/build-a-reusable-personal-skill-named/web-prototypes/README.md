@@ -1,6 +1,6 @@
 # Web Prototypes
 
-Three static UX/UI prototypes for enabling the `targeted-job-application-resume` skill.
+Three static UX/UI prototypes for enabling the `jobpilot` skill.
 
 ## Prototype 1: Pipeline Command Center
 

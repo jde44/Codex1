@@ -1,4 +1,4 @@
-# targeted-job-application-resume
+# jobpilot
 
 A reusable personal Codex skill for Javon Edwards to turn a job URL or pasted job description into a targeted application package. It also supports governed job searching across trusted boards and company career sites, fit scoring, application preparation, approval queues, and daily reporting.
 
@@ -20,12 +20,12 @@ A reusable personal Codex skill for Javon Edwards to turn a job URL or pasted jo
 
 ## How To Use
 
-Paste a job URL, job description, or both and ask Codex to use `targeted-job-application-resume`.
+Paste a job URL, job description, or both and ask Codex to use `jobpilot`.
 
 Example:
 
 ```text
-Use targeted-job-application-resume for this role:
+Use jobpilot for this role:
 https://example.com/jobs/risk-advisory-manager
 
 Please produce the resume, cover letter, recruiter message, gap analysis, and interview prep notes.
@@ -36,7 +36,7 @@ If the URL cannot be accessed, paste the job description directly.
 For job search:
 
 ```text
-Use targeted-job-application-resume to search LinkedIn, Indeed, company career pages, and trusted risk/compliance job boards for high-fit roles.
+Use jobpilot to search LinkedIn, Indeed, company career pages, and trusted risk/compliance job boards for high-fit roles.
 
 Target: risk advisory, regulatory remediation, cyber governance, AI governance, and financial services transformation roles.
 

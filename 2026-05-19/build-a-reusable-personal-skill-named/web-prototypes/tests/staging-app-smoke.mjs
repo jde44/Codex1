@@ -14,7 +14,7 @@ assert(existsSync(appPath), "Expected staging app at web-prototypes/staging-app/
 const html = readFileSync(appPath, "utf8");
 
 const requiredText = [
-  "Targeted Application Command Center",
+  "JobPilot Command Center",
   "Pipeline Command Center",
   "Application Deal Desk",
   "Daily Report Board",

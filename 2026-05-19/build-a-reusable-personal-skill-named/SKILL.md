@@ -1,11 +1,11 @@
 ---
-name: targeted-job-application-resume
+name: jobpilot
 description: Use when Javon Edwards wants to paste a job URL or job description and receive a targeted resume, cover letter, recruiter message, gap analysis, 400-character fit response, STAR stories, and interview prep notes based on his master profile without fabricating experience or exposing confidential client details. Also use when Javon wants to search trusted job boards such as LinkedIn, Indeed, company career sites, Built In, Wellfound, Otta/Welcome to the Jungle, Dice, eFinancialCareers, risk/compliance boards, and consulting or financial services career pages; rank roles by fit; prepare applications; request approval for conflicts; and create a daily application report.
 ---
 
-# Targeted Job Application Resume
+# JobPilot
 
-Use this skill to turn a job URL or pasted job description into a focused application package for Javon Edwards. It can also run a governed job-search workflow across trusted job boards and company career sites.
+Use JobPilot to turn a job URL or pasted job description into a focused application package for Javon Edwards. It can also run a governed job-search workflow across trusted job boards and company career sites.
 
 Primary inputs:
 - Job URL, pasted job description, or both
