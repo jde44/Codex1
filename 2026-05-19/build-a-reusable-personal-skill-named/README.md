@@ -16,6 +16,7 @@ A reusable personal Codex skill for Javon Edwards to turn a job URL or pasted jo
 - Job search shortlist and fit scoring
 - Prepared application queue
 - Daily report of applied, prepared, skipped, and conflict roles
+- Three UX/UI web application prototypes for dashboard, deal-desk, and daily-report workflows
 
 ## How To Use
 
@@ -68,3 +69,4 @@ Prepare application materials for high-fit roles, ask me before submitting anyth
 - `checklists/ats_quality_check.md`: ATS and formatting gate
 - `checklists/no_fabrication_check.md`: Evidence and confidentiality gate
 - `checklists/application_decision_check.md`: Role-fit, conflict, approval, and submission gate
+- `web-prototypes/`: Static web app prototypes for enabling the skill's workflow

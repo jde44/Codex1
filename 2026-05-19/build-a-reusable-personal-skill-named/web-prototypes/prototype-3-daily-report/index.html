@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Skill Prototype 3 - Daily Report Board</title>
+  <style>
+    :root {
+      --ink: #20242a;
+      --muted: #6b7680;
+      --line: #dde3e8;
+      --page: #f5f6f4;
+      --panel: #ffffff;
+      --green: #26734d;
+      --teal: #107a7b;
+      --blue: #2d66a6;
+      --amber: #ae7418;
+      --red: #b24a3d;
+      --dark: #17212b;
+      --shadow: 0 12px 28px rgba(25, 36, 47, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0;
+    }
+    .layout { max-width: 1500px; margin: 0 auto; padding: 24px; }
+    header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: start;
+      margin-bottom: 18px;
+    }
+    h1 { margin: 0; font-size: 30px; line-height: 1.12; }
+    .sub { color: var(--muted); margin-top: 8px; line-height: 1.45; }
+    .date-card {
+      background: var(--dark);
+      color: white;
+      border-radius: 8px;
+      padding: 14px 16px;
+      min-width: 230px;
+      box-shadow: var(--shadow);
+    }
+    .date-card .small { color: #b9c7d2; }
+    .date-card strong { display: block; font-size: 22px; margin-top: 5px; }
+    .kpis { display: grid; grid-template-columns: repeat(6, minmax(130px, 1fr)); gap: 12px; margin-bottom: 16px; }
+    .kpi, .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+    .kpi { padding: 14px; min-height: 104px; }
+    .label { color: var(--muted); font-size: 12px; text-transform: uppercase; font-weight: 780; }
+    .value { font-size: 28px; font-weight: 840; margin-top: 9px; line-height: 1; }
+    .delta { color: var(--muted); font-size: 12px; margin-top: 9px; }
+    .delta.good { color: var(--green); }
+    .delta.warn { color: var(--amber); }
+
+    .grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 16px; }
+    .panel { padding: 18px; min-width: 0; }
+    .panel-head { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+    h2 { margin: 0; font-size: 18px; }
+    .small { color: var(--muted); font-size: 13px; line-height: 1.45; }
+
+    .chart {
+      height: 270px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background:
+        linear-gradient(to top, #edf1f3 1px, transparent 1px) 0 0 / 100% 54px,
+        white;
+      display: flex;
+      align-items: end;
+      gap: 16px;
+      padding: 18px 16px 34px;
+      position: relative;
+      overflow: hidden;
+    }
+    .bar {
+      flex: 1;
+      min-width: 34px;
+      border-radius: 6px 6px 0 0;
+      background: var(--teal);
+      position: relative;
+    }
+    .bar.blue { background: var(--blue); }
+    .bar.green { background: var(--green); }
+    .bar.amber { background: var(--amber); }
+    .bar span {
+      position: absolute;
+      left: 50%;
+      bottom: -24px;
+      transform: translateX(-50%);
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .legend { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 12px; font-size: 13px; color: var(--muted); }
+    .key { display: inline-flex; gap: 6px; align-items: center; }
+    .swatch { width: 12px; height: 12px; border-radius: 3px; background: var(--teal); }
+    .swatch.blue { background: var(--blue); }
+    .swatch.green { background: var(--green); }
+    .swatch.amber { background: var(--amber); }
+
+    .report-sections { display: grid; gap: 12px; }
+    .report-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fbfcfd;
+    }
+    .report-top { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 6px; }
+    .report-title { font-weight: 820; }
+    .pill {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 5px 9px;
+      font-size: 12px;
+      font-weight: 760;
+      background: white;
+      white-space: nowrap;
+    }
+    .pill.green { color: var(--green); background: #e9f5ee; border-color: #c6e2d0; }
+    .pill.blue { color: var(--blue); background: #e9f1fb; border-color: #c6d9ee; }
+    .pill.amber { color: var(--amber); background: #fff5e5; border-color: #ecd3a4; }
+    .pill.red { color: var(--red); background: #faecea; border-color: #eac5c0; }
+
+    .matrix { margin-top: 16px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .matrix-card { border: 1px solid var(--line); border-radius: 8px; padding: 14px; background: white; min-height: 142px; }
+    .matrix-card strong { display: block; margin-bottom: 8px; }
+    .matrix-card ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 13px; line-height: 1.45; }
+
+    .bottom { margin-top: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th { text-align: left; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 11px; text-transform: uppercase; padding: 9px 6px; }
+    td { border-bottom: 1px solid #eef1f3; padding: 11px 6px; vertical-align: top; }
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    button {
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--ink);
+      border-radius: 6px;
+      padding: 9px 12px;
+      font: inherit;
+      font-weight: 760;
+      cursor: pointer;
+    }
+    button.primary { background: var(--teal); border-color: var(--teal); color: white; }
+
+    @media (max-width: 1180px) {
+      .kpis { grid-template-columns: repeat(3, minmax(130px, 1fr)); }
+      .grid, .bottom, .matrix { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 700px) {
+      .layout { padding: 14px; }
+      header { grid-template-columns: 1fr; }
+      .kpis { grid-template-columns: 1fr 1fr; }
+      .actions { justify-content: flex-start; }
+      table { display: block; overflow-x: auto; white-space: nowrap; }
+    }
+  </style>
+</head>
+<body>
+  <main class="layout">
+    <header>
+      <div>
+        <h1>Daily Application Report Board</h1>
+        <div class="sub">Executive view of searches, applications, approval blockers, fit trends, and follow-up actions generated by the targeted job application skill.</div>
+      </div>
+      <div class="date-card">
+        <div class="small">Report date</div>
+        <strong>May 20, 2026</strong>
+        <div class="small">8:00 AM Eastern automation</div>
+      </div>
+    </header>
+
+    <section class="kpis">
+      <div class="kpi"><div class="label">Roles Reviewed</div><div class="value">42</div><div class="delta">8 trusted sources</div></div>
+      <div class="kpi"><div class="label">High-Fit</div><div class="value">11</div><div class="delta good">26% of reviewed roles</div></div>
+      <div class="kpi"><div class="label">Applied</div><div class="value">3</div><div class="delta good">All approved</div></div>
+      <div class="kpi"><div class="label">Prepared</div><div class="value">6</div><div class="delta">Pending review</div></div>
+      <div class="kpi"><div class="label">Conflicts</div><div class="value">2</div><div class="delta warn">Need decision</div></div>
+      <div class="kpi"><div class="label">Follow-Ups</div><div class="value">5</div><div class="delta">Next 7 days</div></div>
+    </section>
+
+    <section class="grid">
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Weekly Flow</h2>
+            <div class="small">Prepared, approved, and applied movement across the last five search days.</div>
+          </div>
+          <div class="actions">
+            <button>Download CSV</button>
+            <button class="primary">Send Report</button>
+          </div>
+        </div>
+        <div class="chart" aria-label="Weekly application flow chart">
+          <div class="bar blue" style="height:42%"><span>Mon</span></div>
+          <div class="bar" style="height:66%"><span>Tue</span></div>
+          <div class="bar green" style="height:78%"><span>Wed</span></div>
+          <div class="bar amber" style="height:52%"><span>Thu</span></div>
+          <div class="bar" style="height:88%"><span>Fri</span></div>
+        </div>
+        <div class="legend">
+          <span class="key"><span class="swatch blue"></span>Prepared</span>
+          <span class="key"><span class="swatch"></span>Reviewed</span>
+          <span class="key"><span class="swatch green"></span>Applied</span>
+          <span class="key"><span class="swatch amber"></span>Decision needed</span>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Today’s Report</h2>
+            <div class="small">Auto-generated daily summary with status and blockers.</div>
+          </div>
+        </div>
+        <div class="report-sections">
+          <div class="report-card">
+            <div class="report-top"><span class="report-title">Atlantic Trust Bank</span><span class="pill green">Applied</span></div>
+            <div class="small">Senior Manager, Regulatory Remediation. Fit score 94. Submitted with approved resume and cover letter.</div>
+          </div>
+          <div class="report-card">
+            <div class="report-top"><span class="report-title">Northstar FinTech</span><span class="pill amber">Needs decision</span></div>
+            <div class="small">AI Governance Risk Manager. Fit score 88. Salary expectation field blocks submission.</div>
+          </div>
+          <div class="report-card">
+            <div class="report-top"><span class="report-title">Civic Capital</span><span class="pill blue">Prepared</span></div>
+            <div class="small">Cyber Risk Governance Manager. Fit score 86. Resume, cover letter, and recruiter message ready.</div>
+          </div>
+          <div class="report-card">
+            <div class="report-top"><span class="report-title">Metro Banking Group</span><span class="pill red">Conflict</span></div>
+            <div class="small">Regulatory Transformation Lead. Possible client sensitivity; requires Javon's decision.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="matrix">
+      <div class="matrix-card">
+        <strong>Best Signals</strong>
+        <ul>
+          <li>Regulatory remediation</li>
+          <li>Issue closure</li>
+          <li>Audit readiness</li>
+          <li>RCSA and KRIs</li>
+        </ul>
+      </div>
+      <div class="matrix-card">
+        <strong>Source Quality</strong>
+        <ul>
+          <li>Company sites highest fit</li>
+          <li>LinkedIn strong volume</li>
+          <li>Indeed mixed relevance</li>
+          <li>Specialist boards useful</li>
+        </ul>
+      </div>
+      <div class="matrix-card">
+        <strong>Repeated Gaps</strong>
+        <ul>
+          <li>Model risk ownership</li>
+          <li>Direct platform administration</li>
+          <li>Named certifications</li>
+          <li>Salary expectations</li>
+        </ul>
+      </div>
+      <div class="matrix-card">
+        <strong>Next Actions</strong>
+        <ul>
+          <li>Approve 4 packages</li>
+          <li>Set salary response</li>
+          <li>Resolve 2 conflicts</li>
+          <li>Follow up next week</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="bottom">
+      <div class="panel">
+        <h2>Approval Queue</h2>
+        <table>
+          <thead><tr><th>Company</th><th>Role</th><th>Fit</th><th>Decision</th></tr></thead>
+          <tbody>
+            <tr><td>Northstar FinTech</td><td>AI Governance Risk Manager</td><td>88</td><td>Confirm salary response</td></tr>
+            <tr><td>Civic Capital</td><td>Cyber Risk Governance Manager</td><td>86</td><td>Approve package</td></tr>
+            <tr><td>Harbor Advisory</td><td>Risk and Controls Senior Manager</td><td>81</td><td>Confirm travel tolerance</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="panel">
+        <h2>Skipped Roles</h2>
+        <table>
+          <thead><tr><th>Company</th><th>Role</th><th>Reason</th></tr></thead>
+          <tbody>
+            <tr><td>DataSec Cloud</td><td>GRC Engineer</td><td>Too hands-on platform administration-heavy</td></tr>
+            <tr><td>Local Lender</td><td>Compliance Analyst</td><td>Too junior for target positioning</td></tr>
+            <tr><td>National Bank</td><td>AML Investigator</td><td>Narrow execution role; weak advisory alignment</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
