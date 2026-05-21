@@ -7,25 +7,6 @@ description: Use when Javon Edwards wants to paste a job URL or job description 
 
 Use JobPilot to turn a job URL or pasted job description into a focused application package for Javon Edwards. It can also run a governed job-search workflow across trusted job boards and company career sites.
 
-## Bespoke Workflow Extension
-
-For broader career workflow requests, route through the installed `jobpilot-orchestrator` skill. This extends JobPilot without replacing the resume, ATS, evidence, confidentiality, and no-fabrication logic in this skill.
-
-Use `jobpilot-orchestrator` for:
-- Full JobPilot workflow for a role
-- Target company lists
-- Positioning statements
-- Hiring manager outreach
-- Referral requests
-- LinkedIn headline optimization
-- Achievement-to-STAR story building
-- Interview question prep
-- Post-interview follow-up
-- Offer negotiation
-- 30-60-90 day plans
-
-Keep this `jobpilot` skill as the source of truth for targeted resumes, ATS strategy, cover letters, recruiter messages, application packages, daily job reports, and application decision gates.
-
 Primary inputs:
 - Job URL, pasted job description, or both
 - Optional target resume length, role level, preferred output set, and any company/client names Javon has approved for use

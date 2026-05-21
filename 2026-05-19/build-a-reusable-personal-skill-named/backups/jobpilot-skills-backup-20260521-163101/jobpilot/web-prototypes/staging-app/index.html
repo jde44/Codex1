@@ -1,0 +1,783 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JobPilot Command Center - Staging</title>
+  <style>
+    :root {
+      --ink: #17212b;
+      --muted: #64727f;
+      --line: #dbe3ea;
+      --page: #f4f7f6;
+      --panel: #ffffff;
+      --nav: #122530;
+      --teal: #0c7b75;
+      --green: #247a4b;
+      --blue: #2b67a4;
+      --gold: #ad7418;
+      --red: #b4483b;
+      --shadow: 0 14px 34px rgba(20, 35, 48, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--page);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0;
+    }
+
+    .app {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+    }
+
+    aside {
+      background: var(--nav);
+      color: #eff7f7;
+      padding: 24px 18px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+    }
+
+    .brand {
+      font-size: 19px;
+      font-weight: 820;
+      line-height: 1.15;
+      margin-bottom: 26px;
+    }
+
+    .brand span {
+      display: block;
+      color: #9bd0cb;
+      font-size: 12px;
+      font-weight: 700;
+      margin-top: 7px;
+    }
+
+    .tab-list {
+      display: grid;
+      gap: 7px;
+    }
+
+    .nav-tab {
+      border: 0;
+      width: 100%;
+      background: transparent;
+      color: #d8e8ea;
+      text-align: left;
+      border-radius: 7px;
+      padding: 12px;
+      font: inherit;
+      font-weight: 740;
+      cursor: pointer;
+    }
+
+    .nav-tab:hover,
+    .nav-tab[aria-selected="true"] {
+      background: rgba(255, 255, 255, 0.11);
+      color: #ffffff;
+    }
+
+    .nav-meta {
+      margin-top: 30px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.16);
+      color: #bdd1d8;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    main {
+      min-width: 0;
+      padding: 24px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    h1, h2, h3 { margin: 0; }
+    h1 { font-size: 30px; line-height: 1.1; }
+    h2 { font-size: 18px; }
+    h3 { font-size: 15px; }
+
+    .subtitle {
+      color: var(--muted);
+      line-height: 1.45;
+      margin-top: 8px;
+      max-width: 840px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--ink);
+      border-radius: 6px;
+      padding: 10px 13px;
+      font: inherit;
+      font-weight: 760;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn.primary {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: #ffffff;
+    }
+
+    .btn.danger {
+      color: var(--red);
+    }
+
+    .view[hidden] { display: none; }
+
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(140px, 1fr));
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .kpi,
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .kpi {
+      padding: 16px;
+      min-height: 112px;
+    }
+
+    .label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 820;
+      text-transform: uppercase;
+    }
+
+    .value {
+      margin-top: 10px;
+      font-size: 30px;
+      font-weight: 860;
+      line-height: 1;
+    }
+
+    .delta {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 10px;
+    }
+
+    .delta.good { color: var(--green); }
+    .delta.warn { color: var(--gold); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.95fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .three-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 0.9fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .two-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .panel {
+      padding: 18px;
+      min-width: 0;
+    }
+
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .small {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    th {
+      text-align: left;
+      color: var(--muted);
+      border-bottom: 1px solid var(--line);
+      padding: 9px 7px;
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+    td {
+      border-bottom: 1px solid #eef2f4;
+      padding: 11px 7px;
+      vertical-align: top;
+    }
+
+    .company { font-weight: 820; }
+    .role { color: var(--muted); margin-top: 3px; }
+    .score { font-weight: 860; }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #f9fbfc;
+      padding: 5px 9px;
+      font-size: 12px;
+      font-weight: 780;
+      white-space: nowrap;
+    }
+
+    .pill.green { color: var(--green); background: #e9f5ee; border-color: #c5e2d0; }
+    .pill.blue { color: var(--blue); background: #e9f1fb; border-color: #c8daee; }
+    .pill.gold { color: var(--gold); background: #fff5e5; border-color: #ecd4a4; }
+    .pill.red { color: var(--red); background: #faecea; border-color: #eac5bf; }
+
+    .bar-list,
+    .queue,
+    .cards {
+      display: grid;
+      gap: 12px;
+    }
+
+    .bar-row { display: grid; gap: 7px; }
+    .bar-meta { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; }
+    .track { height: 10px; background: #e7eef1; border-radius: 999px; overflow: hidden; }
+    .fill { height: 100%; background: var(--teal); border-radius: inherit; }
+    .fill.green { background: var(--green); }
+    .fill.blue { background: var(--blue); }
+    .fill.gold { background: var(--gold); }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fbfcfd;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 7px;
+    }
+
+    .card-title { font-weight: 840; }
+
+    .decision-buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .mini {
+      border: 1px solid var(--line);
+      background: white;
+      border-radius: 6px;
+      padding: 7px 9px;
+      color: var(--ink);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 760;
+      cursor: pointer;
+    }
+
+    .score-wrap {
+      display: grid;
+      grid-template-columns: 136px 1fr;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .ring {
+      width: 132px;
+      height: 132px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at center, white 0 56%, transparent 57%),
+        conic-gradient(var(--green) 0 88%, #e5eceb 88% 100%);
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+    }
+
+    .ring strong { font-size: 32px; }
+
+    .score-lines { display: grid; gap: 10px; }
+    .score-line { display: grid; grid-template-columns: 150px 1fr 34px; gap: 10px; align-items: center; font-size: 13px; }
+
+    textarea {
+      width: 100%;
+      min-height: 232px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fcfdfc;
+      color: var(--ink);
+      font: 13px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      resize: vertical;
+    }
+
+    .copy-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .copy-tab {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #f5f7f7;
+      padding: 8px 10px;
+      color: var(--ink);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 760;
+      cursor: pointer;
+    }
+
+    .copy-tab.active {
+      background: var(--ink);
+      color: white;
+      border-color: var(--ink);
+    }
+
+    .gate {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 11px;
+      background: #fbfcfd;
+    }
+
+    .dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--green);
+      margin-top: 2px;
+    }
+
+    .dot.warn { background: var(--gold); }
+    .dot.stop { background: var(--red); }
+
+    .chart {
+      height: 260px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background:
+        linear-gradient(to top, #edf1f3 1px, transparent 1px) 0 0 / 100% 52px,
+        white;
+      display: flex;
+      align-items: end;
+      gap: 16px;
+      padding: 18px 16px 34px;
+      overflow: hidden;
+    }
+
+    .chart-bar {
+      flex: 1;
+      min-width: 34px;
+      border-radius: 6px 6px 0 0;
+      background: var(--teal);
+      position: relative;
+    }
+
+    .chart-bar span {
+      position: absolute;
+      left: 50%;
+      bottom: -24px;
+      transform: translateX(-50%);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .market-matrix {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .market-matrix ul {
+      margin: 8px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 1180px) {
+      .app { grid-template-columns: 1fr; }
+      aside { position: static; height: auto; }
+      .kpis { grid-template-columns: repeat(2, minmax(140px, 1fr)); }
+      .grid, .three-grid, .two-grid, .market-matrix { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 720px) {
+      main { padding: 16px; }
+      .topbar { display: block; }
+      .actions { margin-top: 14px; justify-content: flex-start; }
+      .kpis { grid-template-columns: 1fr; }
+      .score-wrap { display: block; }
+      .ring { margin: 14px 0; }
+      .score-line { grid-template-columns: 1fr; }
+      table { display: block; overflow-x: auto; white-space: nowrap; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside>
+      <div class="brand">JobPilot Command Center <span>Staging approval build</span></div>
+      <div class="tab-list" role="tablist" aria-label="Application workflow navigation">
+        <button class="nav-tab" id="tab-command" data-testid="tab-command" data-view="command" role="tab" aria-selected="true" aria-controls="view-command">Pipeline Command Center</button>
+        <button class="nav-tab" id="tab-deal-desk" data-testid="tab-deal-desk" data-view="deal-desk" role="tab" aria-selected="false" aria-controls="view-deal-desk">Application Deal Desk</button>
+        <button class="nav-tab" id="tab-report" data-testid="tab-report" data-view="report" role="tab" aria-selected="false" aria-controls="view-report">Daily Report Board</button>
+      </div>
+      <div class="nav-meta">
+        Submit only after approval. The workflow prepares, scores, and reports applications while stopping for conflicts, salary fields, legal attestations, references, assessments, and sensitive questions.
+      </div>
+    </aside>
+
+    <main>
+      <div class="topbar">
+        <div>
+          <h1>JobPilot Command Center</h1>
+          <div class="subtitle">One staging app with dashboard KPIs, single-role evaluation, approval controls, and daily reporting for Javon's job search and application skill.</div>
+        </div>
+        <div class="actions">
+          <button class="btn">Export Daily Report</button>
+          <button class="btn">Review Conflicts</button>
+          <button class="btn primary">Run Search</button>
+        </div>
+      </div>
+
+      <section class="kpis" aria-label="Staging app KPI overview">
+        <div class="kpi" data-testid="kpi-high-fit">
+          <div class="label">High-Fit Roles</div>
+          <div class="value">18</div>
+          <div class="delta good">85+ fit score target</div>
+        </div>
+        <div class="kpi" data-testid="kpi-prepared">
+          <div class="label">Prepared Packages</div>
+          <div class="value">7</div>
+          <div class="delta good">Resume + cover letter ready</div>
+        </div>
+        <div class="kpi">
+          <div class="label">Applied</div>
+          <div class="value">3</div>
+          <div class="delta">Approved submissions only</div>
+        </div>
+        <div class="kpi" data-testid="kpi-decision-needed">
+          <div class="label">Decision Needed</div>
+          <div class="value">5</div>
+          <div class="delta warn">Conflicts or missing answers</div>
+        </div>
+        <div class="kpi">
+          <div class="label">Avg Fit Score</div>
+          <div class="value">82</div>
+          <div class="delta good">Strong market signal</div>
+        </div>
+      </section>
+
+      <section class="view" id="view-command" data-testid="view-command" role="tabpanel" aria-labelledby="tab-command">
+        <div class="grid">
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>Pipeline Command Center</h2>
+                <div class="small">Search, score, and move roles through review without losing approval control.</div>
+              </div>
+            </div>
+            <table>
+              <thead>
+                <tr><th>Company / Role</th><th>Source</th><th>Fit Score</th><th>Status</th><th>Next Action</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><div class="company">Atlantic Trust Bank</div><div class="role">Senior Manager, Regulatory Remediation</div></td>
+                  <td>Company careers</td><td class="score">94</td><td><span class="pill green">Applied</span></td><td>Follow up in 7 days</td>
+                </tr>
+                <tr>
+                  <td><div class="company">Northstar FinTech</div><div class="role">AI Governance Risk Manager</div></td>
+                  <td>LinkedIn Jobs</td><td class="score">88</td><td><span class="pill gold">Awaiting approval</span></td><td>Confirm salary response</td>
+                </tr>
+                <tr>
+                  <td><div class="company">Civic Capital</div><div class="role">Cyber Risk Governance Manager</div></td>
+                  <td>eFinancialCareers</td><td class="score">86</td><td><span class="pill blue">Prepared</span></td><td>Review application package</td>
+                </tr>
+                <tr>
+                  <td><div class="company">Metro Banking Group</div><div class="role">Regulatory Transformation Lead</div></td>
+                  <td>Company careers</td><td class="score">78</td><td><span class="pill red">Conflict review</span></td><td>Client sensitivity check</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>Source Performance</h2>
+                <div class="small">Quality signal by trusted board and career site.</div>
+              </div>
+            </div>
+            <div class="bar-list">
+              <div class="bar-row"><div class="bar-meta"><strong>Company career pages</strong><span>91 avg fit</span></div><div class="track"><div class="fill green" style="width:91%"></div></div></div>
+              <div class="bar-row"><div class="bar-meta"><strong>LinkedIn Jobs</strong><span>84 avg fit</span></div><div class="track"><div class="fill blue" style="width:84%"></div></div></div>
+              <div class="bar-row"><div class="bar-meta"><strong>eFinancialCareers</strong><span>79 avg fit</span></div><div class="track"><div class="fill" style="width:79%"></div></div></div>
+              <div class="bar-row"><div class="bar-meta"><strong>Indeed</strong><span>67 avg fit</span></div><div class="track"><div class="fill gold" style="width:67%"></div></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="two-grid">
+          <div class="panel" id="approval-queue" data-testid="approval-queue">
+            <div class="panel-head">
+              <div>
+                <h2>Approval Queue</h2>
+                <div class="small">Roles requiring Javon's decision before submission.</div>
+              </div>
+            </div>
+            <div class="queue">
+              <div class="card">
+                <div class="card-top"><span class="card-title">AI Governance Risk Manager</span><span class="pill gold">Salary field</span></div>
+                <div class="small">High-fit fintech role blocked by compensation question.</div>
+                <div class="decision-buttons"><button class="mini">Approve</button><button class="mini">Revise</button><button class="mini">Skip</button></div>
+              </div>
+              <div class="card">
+                <div class="card-top"><span class="card-title">Regulatory Transformation Lead</span><span class="pill red">Conflict</span></div>
+                <div class="small">Possible client sensitivity; do not submit until Javon confirms.</div>
+                <div class="decision-buttons"><button class="mini">Ask Me</button><button class="mini">Watchlist</button><button class="mini">Skip</button></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>Automation Guardrails</h2>
+                <div class="small">What the app can do before and after approval.</div>
+              </div>
+            </div>
+            <div class="cards">
+              <div class="card"><div class="card-title">Before approval</div><div class="small">Search, score, draft, prepare, and report.</div></div>
+              <div class="card"><div class="card-title">After approval</div><div class="small">Submit only the approved role/application package.</div></div>
+              <div class="card"><div class="card-title">Always stop</div><div class="small">Legal attestations, EEO/disability/veteran questions, references, assessments, salary, work authorization, relocation, and conflicts.</div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="view-deal-desk" data-testid="view-deal-desk" role="tabpanel" aria-labelledby="tab-deal-desk" hidden>
+        <div class="three-grid">
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>Application Deal Desk</h2>
+                <div class="small">Single-role review with evidence mapping and application package readiness.</div>
+              </div>
+              <span class="pill green">High-fit</span>
+            </div>
+            <h3>Senior Manager, Regulatory Remediation</h3>
+            <div class="small" style="margin-top:8px">Atlantic Trust Bank | Hybrid Miami / Remote | Company career site</div>
+            <div class="cards" style="margin-top:14px">
+              <div class="card"><div class="card-top"><span class="card-title">Regulatory remediation</span><span class="pill green">Strong</span></div><div class="small">MRA/MRIA-style work, issue closure, root cause analysis, and audit readiness.</div></div>
+              <div class="card"><div class="card-top"><span class="card-title">Risk and controls</span><span class="pill green">Strong</span></div><div class="small">ERM, RCSA, KRIs, 3LoD, controls testing, and issue management.</div></div>
+              <div class="card"><div class="card-top"><span class="card-title">AI governance</span><span class="pill gold">Adjacent</span></div><div class="small">Professional development and governance use cases; do not overstate technical ownership.</div></div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>Fit Score</h2>
+                <div class="small">Weighted by role alignment, evidence, seniority, domain, practicality, and application readiness.</div>
+              </div>
+            </div>
+            <div class="score-wrap">
+              <div class="ring"><strong>88</strong></div>
+              <div class="score-lines">
+                <div class="score-line"><span>Role alignment</span><div class="track"><div class="fill green" style="width:96%"></div></div><strong>24</strong></div>
+                <div class="score-line"><span>Evidence strength</span><div class="track"><div class="fill green" style="width:88%"></div></div><strong>22</strong></div>
+                <div class="score-line"><span>Seniority match</span><div class="track"><div class="fill blue" style="width:86%"></div></div><strong>13</strong></div>
+                <div class="score-line"><span>Practical fit</span><div class="track"><div class="fill gold" style="width:70%"></div></div><strong>7</strong></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel" id="decision-gate" data-testid="decision-gate">
+            <div class="panel-head">
+              <div>
+                <h2>Application Decision Gate</h2>
+                <div class="small">Submission readiness before anything leaves the app.</div>
+              </div>
+            </div>
+            <div class="cards">
+              <div class="gate"><span class="dot"></span><div><strong>ATS readiness</strong><div class="small">Keywords and formatting pass.</div></div></div>
+              <div class="gate"><span class="dot"></span><div><strong>Evidence check</strong><div class="small">No unsupported claims or certifications.</div></div></div>
+              <div class="gate"><span class="dot warn"></span><div><strong>Salary response</strong><div class="small">Requires Javon's input.</div></div></div>
+              <div class="gate"><span class="dot stop"></span><div><strong>Submission approval</strong><div class="small">Paused until Javon approves this package.</div></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="two-grid">
+          <div class="panel">
+            <div class="panel-head"><div><h2>Application Package Draft</h2><div class="small">Resume strategy, cover letter, and why-fit response.</div></div></div>
+            <div class="copy-tabs">
+              <button class="copy-tab active" data-copy="resume">Resume Strategy</button>
+              <button class="copy-tab" data-copy="cover">Cover Letter</button>
+              <button class="copy-tab" data-copy="why">Why Fit</button>
+            </div>
+            <textarea id="package-copy" aria-label="Generated application package copy"></textarea>
+          </div>
+          <div class="panel">
+            <h2>Gap Analysis</h2>
+            <table>
+              <thead><tr><th>Requirement</th><th>Evidence</th><th>Strength</th></tr></thead>
+              <tbody>
+                <tr><td>Bank remediation</td><td>PwC advisory, SIFI/global banking remediation</td><td><span class="pill green">Strong</span></td></tr>
+                <tr><td>AI governance</td><td>Training and governance use cases</td><td><span class="pill gold">Adjacent</span></td></tr>
+                <tr><td>Platform ownership</td><td>Not evidenced in profile</td><td><span class="pill red">Do not claim</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="view-report" data-testid="view-report" role="tabpanel" aria-labelledby="tab-report" hidden>
+        <div class="grid">
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>Daily Report Board</h2>
+                <div class="small">Search throughput and daily movement across applied, prepared, skipped, and conflict roles.</div>
+              </div>
+              <span class="pill blue">May 20, 2026</span>
+            </div>
+            <div class="chart" aria-label="Weekly application flow chart">
+              <div class="chart-bar" style="height:42%"><span>Mon</span></div>
+              <div class="chart-bar" style="height:66%; background:var(--blue)"><span>Tue</span></div>
+              <div class="chart-bar" style="height:78%; background:var(--green)"><span>Wed</span></div>
+              <div class="chart-bar" style="height:52%; background:var(--gold)"><span>Thu</span></div>
+              <div class="chart-bar" style="height:88%"><span>Fri</span></div>
+            </div>
+          </div>
+
+          <div class="panel" id="daily-report" data-testid="daily-report">
+            <div class="panel-head">
+              <div>
+                <h2>Daily Job Application Report</h2>
+                <div class="small">Generated report for approval before production submissions.</div>
+              </div>
+            </div>
+            <div class="cards">
+              <div class="card"><div class="card-top"><span class="card-title">Atlantic Trust Bank</span><span class="pill green">Applied</span></div><div class="small">Senior Manager, Regulatory Remediation. Approved and submitted.</div></div>
+              <div class="card"><div class="card-top"><span class="card-title">Northstar FinTech</span><span class="pill gold">Needs decision</span></div><div class="small">AI Governance Risk Manager. Salary response required.</div></div>
+              <div class="card"><div class="card-top"><span class="card-title">Civic Capital</span><span class="pill blue">Prepared</span></div><div class="small">Cyber Risk Governance Manager. Package ready for review.</div></div>
+              <div class="card"><div class="card-top"><span class="card-title">Metro Banking Group</span><span class="pill red">Conflict</span></div><div class="small">Possible client sensitivity before applying.</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="market-matrix">
+          <div class="panel"><h3>Best Signals</h3><ul><li>Regulatory remediation</li><li>Issue closure</li><li>Audit readiness</li><li>RCSA and KRIs</li></ul></div>
+          <div class="panel"><h3>Source Quality</h3><ul><li>Company sites highest fit</li><li>LinkedIn strong volume</li><li>Indeed mixed relevance</li><li>Specialist boards useful</li></ul></div>
+          <div class="panel"><h3>Repeated Gaps</h3><ul><li>Model risk ownership</li><li>Direct platform administration</li><li>Named certifications</li><li>Salary expectations</li></ul></div>
+          <div class="panel"><h3>Next Actions</h3><ul><li>Approve 4 packages</li><li>Set salary response</li><li>Resolve 2 conflicts</li><li>Follow up next week</li></ul></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const copyBlocks = {
+      resume: "Resume strategy: Position Javon as a cyber, risk, and regulatory advisory manager with 10+ years across banking, compliance, controls, issue management, audit remediation, and financial services transformation. Emphasize MRA/MRIA-style remediation, root cause analysis, RCSA, KRIs, 3LoD, audit readiness, and CISO/CRO-facing advisory.",
+      cover: "Dear Hiring Team, I am interested in the Senior Manager, Regulatory Remediation role. My background sits at the intersection of cyber, risk, regulatory remediation, banking, controls, and financial services transformation, with practical experience helping stakeholders translate regulatory expectations into sustainable governance and control improvements.",
+      why: "I bring 10+ years across cyber, risk, regulatory remediation, banking, controls, and financial services transformation. My experience with issue management, audit readiness, governance, and cross-functional stakeholders aligns well with this role."
+    };
+
+    const tabs = Array.from(document.querySelectorAll(".nav-tab"));
+    const views = Array.from(document.querySelectorAll(".view"));
+    const copyTabs = Array.from(document.querySelectorAll(".copy-tab"));
+    const packageCopy = document.getElementById("package-copy");
+
+    function showView(viewName) {
+      tabs.forEach(tab => {
+        const selected = tab.dataset.view === viewName;
+        tab.setAttribute("aria-selected", selected ? "true" : "false");
+      });
+
+      views.forEach(view => {
+        view.hidden = view.id !== `view-${viewName}`;
+      });
+
+      localStorage.setItem("stagingAppSelectedView", viewName);
+    }
+
+    function showCopy(copyName) {
+      copyTabs.forEach(tab => tab.classList.toggle("active", tab.dataset.copy === copyName));
+      packageCopy.value = copyBlocks[copyName];
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => showView(tab.dataset.view));
+    });
+
+    copyTabs.forEach(tab => {
+      tab.addEventListener("click", () => showCopy(tab.dataset.copy));
+    });
+
+    const initialView = localStorage.getItem("stagingAppSelectedView") || "command";
+    showView(["command", "deal-desk", "report"].includes(initialView) ? initialView : "command");
+    showCopy("resume");
+  </script>
+</body>
+</html>
