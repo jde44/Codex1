@@ -1,0 +1,39 @@
+{
+  "name": "argbrix",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "test": "tsc -p tsconfig.tests.json && node --test .test-dist/tests/*.test.js",
+    "validate:harness": "tsc -p tsconfig.tests.json && node --test .test-dist/tests/*.test.js && tsc --noEmit && next build"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.6.1",
+    "@supabase/supabase-js": "^2.49.4",
+    "@hookform/resolvers": "^5.0.1",
+    "clsx": "^2.1.1",
+    "jspdf": "^3.0.1",
+    "lucide-react": "^0.511.0",
+    "next": "16.2.6",
+    "react": "19.2.1",
+    "react-dom": "19.2.1",
+    "react-hook-form": "^7.56.4",
+    "recharts": "^2.15.3",
+    "tailwind-merge": "^3.3.0",
+    "zod": "^3.25.28"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.7",
+    "@types/node": "^22.15.21",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "eslint": "^9.27.0",
+    "eslint-config-next": "16.2.6",
+    "tailwindcss": "^4.1.7",
+    "typescript": "^5.8.3"
+  }
+}

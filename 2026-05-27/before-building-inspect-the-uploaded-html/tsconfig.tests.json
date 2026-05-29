@@ -1,0 +1,27 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "outDir": ".test-dist",
+    "rootDir": ".",
+    "noEmit": false,
+    "incremental": false,
+    "jsx": "react-jsx",
+    "types": ["node"],
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": [
+    "tests/**/*.ts",
+    "lib/agents/**/*.ts",
+    "lib/auth/**/*.ts",
+    "lib/intake/**/*.ts",
+    "lib/model-routing/**/*.ts",
+    "lib/security/**/*.ts",
+    "lib/token-cost/**/*.ts",
+    "lib/types.ts"
+  ],
+  "exclude": ["node_modules", ".next", ".test-dist"]
+}
