@@ -5,7 +5,7 @@ export default function AboutPage() {
         <p className="small-caps">About</p>
         <h1>Built for regulated teams where evidence matters.</h1>
         <p>
-          ARGBriX is designed for AI governance, risk, compliance,
+          Veris is designed for AI governance, risk, compliance,
           audit, data governance, model risk, architecture, and executive teams moving AI from idea
           to governed operation.
         </p>

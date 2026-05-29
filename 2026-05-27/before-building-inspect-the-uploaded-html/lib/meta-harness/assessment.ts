@@ -171,7 +171,7 @@ export function generateMetaHarnessAssessment(): MetaHarnessAssessment {
     ],
     runTrace: {
       id: "mh-run-current",
-      task: "Optimize ARGBriX app and governed skills using the meta-harness model.",
+      task: "Optimize Veris app and governed skills using the meta-harness model.",
       harnessUsed: [
         "Project instructions",
         "Meta-harness skill",

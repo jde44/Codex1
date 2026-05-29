@@ -1,13 +1,13 @@
 [Unit]
-Description=ARGBriX
+Description=Veris
 After=network.target
 
 [Service]
 Type=simple
-WorkingDirectory=/opt/argbrix
+WorkingDirectory=/opt/veris
 Environment=NODE_ENV=production
 Environment=PORT=3000
-EnvironmentFile=-/opt/argbrix/.env.production
+EnvironmentFile=-/opt/veris/.env.production
 ExecStart=/usr/bin/npm run start
 Restart=always
 RestartSec=10

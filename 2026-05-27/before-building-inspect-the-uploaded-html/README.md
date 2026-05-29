@@ -1,4 +1,4 @@
-# ARGBriX
+# Veris
 
 Production-grade Next.js scaffold for an enterprise AI governance SaaS application. The app is now a standalone implementation with a public website, member workspace, mock governance engine, and Supabase-ready data model.
 
@@ -44,18 +44,18 @@ Deployment assets:
 - `Dockerfile`
 - `.dockerignore`
 - `deploy/oracle/README.md`
-- `deploy/oracle/argbrix.service`
-- `deploy/oracle/nginx.argbrix.conf`
+- `deploy/oracle/veris.service`
+- `deploy/oracle/nginx.veris.conf`
 
 High-level deployment path:
 
 1. Create an Ubuntu VM in Oracle Cloud.
 2. Open inbound `80` and `443` in the Oracle VCN security rules.
 3. SSH into the VM and install Node, npm, Git, and Nginx.
-4. Copy or clone this repo into `/opt/argbrix`.
+4. Copy or clone this repo into `/opt/veris`.
 5. Run `npm install`, `npm run test`, and `npm run build`.
-6. Install `deploy/oracle/argbrix.service` as a systemd service.
-7. Install `deploy/oracle/nginx.argbrix.conf` as the Nginx reverse proxy.
+6. Install `deploy/oracle/veris.service` as a systemd service.
+7. Install `deploy/oracle/nginx.veris.conf` as the Nginx reverse proxy.
 
 Full instructions are in `deploy/oracle/README.md`.
 

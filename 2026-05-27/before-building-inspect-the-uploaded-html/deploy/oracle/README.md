@@ -41,13 +41,13 @@ Use Node 22 LTS or newer for this project. If Ubuntu's default Node is older, in
 Recommended path:
 
 ```bash
-sudo mkdir -p /opt/argbrix
-sudo chown -R ubuntu:ubuntu /opt/argbrix
-cd /opt/argbrix
+sudo mkdir -p /opt/veris
+sudo chown -R ubuntu:ubuntu /opt/veris
+cd /opt/veris
 git clone <your-repo-url> .
 ```
 
-If this is not in Git yet, copy the project folder to `/opt/argbrix` with `scp` or `rsync`.
+If this is not in Git yet, copy the project folder to `/opt/veris` with `scp` or `rsync`.
 
 ## 4. Configure Environment
 
@@ -70,18 +70,18 @@ SUPABASE_SERVICE_ROLE_KEY=
 npm install
 npm run test
 npm run build
-sudo cp deploy/oracle/argbrix.service /etc/systemd/system/argbrix.service
+sudo cp deploy/oracle/veris.service /etc/systemd/system/veris.service
 sudo systemctl daemon-reload
-sudo systemctl enable argbrix
-sudo systemctl start argbrix
-sudo systemctl status argbrix
+sudo systemctl enable veris
+sudo systemctl start veris
+sudo systemctl status veris
 ```
 
 ## 6. Configure Nginx
 
 ```bash
-sudo cp deploy/oracle/nginx.argbrix.conf /etc/nginx/sites-available/argbrix
-sudo ln -s /etc/nginx/sites-available/argbrix /etc/nginx/sites-enabled/argbrix
+sudo cp deploy/oracle/nginx.veris.conf /etc/nginx/sites-available/veris
+sudo ln -s /etc/nginx/sites-available/veris /etc/nginx/sites-enabled/veris
 sudo nginx -t
 sudo systemctl reload nginx
 ```
@@ -106,7 +106,7 @@ sudo certbot --nginx -d your-domain.com
 ```bash
 curl -I http://localhost:3000
 curl -I http://<oracle-public-ip>
-sudo journalctl -u argbrix -f
+sudo journalctl -u veris -f
 sudo tail -f /var/log/nginx/access.log
 ```
 
