@@ -6,7 +6,7 @@ export function WorkspaceShell({ children, title, subtitle }: { children: ReactN
     <main className="workspace">
       <aside className="workspace-nav">
         <div className="workspace-logo">
-          <strong>Veris</strong>
+          <strong>Zess AI</strong>
           <span>Ready. Set. Grow.</span>
         </div>
         <WorkspaceNav />

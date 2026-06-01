@@ -2,7 +2,7 @@
 
 ## Core Position
 
-Veris is a market companion to Snowflake, Databricks, AWS, Azure, and enterprise data governance ecosystems.
+Zess AI is a market companion to Snowflake, Databricks, AWS, Azure, and enterprise data governance ecosystems.
 
 It does not replace the data platform. It operationalizes what happens after a governed data signal, model output, anomaly, or AI use case appears.
 
@@ -12,7 +12,7 @@ From governed data to governed AI decisions.
 
 ## Expanded Positioning
 
-Enterprise data platforms govern, process, and activate data. Veris turns those data signals into auditable AI governance workflows: readiness assessment, policy-to-control mapping, role accountability, approval, monitoring, memo generation, and audit evidence.
+Enterprise data platforms govern, process, and activate data. Zess AI turns those data signals into auditable AI governance workflows: readiness assessment, policy-to-control mapping, role accountability, approval, monitoring, memo generation, and audit evidence.
 
 ## What We Are
 

@@ -4,7 +4,7 @@ import { SiteNav } from "@/components/marketing/site-nav";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Veris",
+  title: "Zess AI",
   description: "AI governance operating layer for regulated organizations."
 };
 
@@ -15,8 +15,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <div className="site-shell">
           <header className="topbar">
             <Link className="brand" href="/">
-              <span className="brand-mark">VER</span>
-              <span>Veris</span>
+              <span className="brand-mark">ZAI</span>
+              <span>Zess AI</span>
             </Link>
             <SiteNav />
           </header>

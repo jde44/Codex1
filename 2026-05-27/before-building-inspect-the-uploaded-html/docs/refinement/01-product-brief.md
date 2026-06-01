@@ -2,7 +2,7 @@
 
 ## Working Name
 
-Veris
+Zess AI
 
 ## Product Thesis
 
@@ -50,7 +50,7 @@ Sharp message:
 
 Expanded message:
 
-> Snowflake and Databricks organize, govern, and activate enterprise data. Veris turns those governed data insights into auditable AI decisions, controls, approvals, and real-time operating actions.
+> Snowflake and Databricks organize, govern, and activate enterprise data. Zess AI turns those governed data insights into auditable AI decisions, controls, approvals, and real-time operating actions.
 
 The app should not compete with data platforms as a warehouse, lakehouse, catalog, BI tool, or model registry. It should sit after and beside those platforms as the layer that asks:
 

@@ -1,10 +1,10 @@
-# Veris LLM Agent Handoff
+# Zess AI LLM Agent Handoff
 
 ## Current State
 
-Veris is a Next.js App Router application for an AI governance command center. It is built as a SaaS-style front end with public marketing pages, a member workspace, deterministic mock governance agents, Supabase-ready schema/RLS files, and Oracle Free Tier deployment notes.
+Zess AI is a Next.js App Router application for an AI governance command center. It is built as a SaaS-style front end with public marketing pages, a member workspace, deterministic mock governance agents, Supabase-ready schema/RLS files, and Oracle Free Tier deployment notes.
 
-The app has been renamed from "Agentic Risk Governance Command Center" to **Veris** across visible app chrome, metadata, package name, README, deployment files, and refinement docs.
+The app has been renamed from "Agentic Risk Governance Command Center" to **Zess AI** across visible app chrome, metadata, package name, README, deployment files, and refinement docs.
 
 ## Repository Access
 
@@ -60,8 +60,8 @@ lib/security/prompt-firewall.ts
 lib/meta-harness/assessment.ts
 lib/supabase/schema.sql
 lib/supabase/rls-policies.sql
-deploy/oracle/veris.service
-deploy/oracle/nginx.veris.conf
+deploy/oracle/zess-ai.service
+deploy/oracle/nginx.zess-ai.conf
 docs/security/SECURITY_TEST_PLAN.md
 ```
 
@@ -236,8 +236,8 @@ Oracle deployment assets:
 
 ```text
 deploy/oracle/README.md
-deploy/oracle/veris.service
-deploy/oracle/nginx.veris.conf
+deploy/oracle/zess-ai.service
+deploy/oracle/nginx.zess-ai.conf
 Dockerfile
 .dockerignore
 ```
@@ -245,7 +245,7 @@ Dockerfile
 Expected Oracle app path:
 
 ```text
-/opt/veris
+/opt/zess-ai
 ```
 
 ## Known Repo Caveats
