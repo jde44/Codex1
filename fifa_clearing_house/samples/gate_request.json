@@ -1,0 +1,11 @@
+{
+  "transfer_type": "PROFESSIONAL_INTERNATIONAL",
+  "player_dob": "2002-03-15",
+  "transfer_date": "2024-07-01",
+  "player_former_club_confederation": "CONMEBOL",
+  "player_new_club_confederation": "UEFA",
+  "is_first_professional_contract": false,
+  "transfer_fee_usd": 5000000.00,
+  "source": "manual",
+  "confirmed": true
+}

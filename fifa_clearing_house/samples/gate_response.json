@@ -1,0 +1,20 @@
+{
+  "request_id": "a1b2c3d4-0000-0000-0000-000000000001",
+  "applicable_mechanisms": [
+    "SOLIDARITY_CONTRIBUTION",
+    "TRAINING_COMPENSATION"
+  ],
+  "player_age_at_transfer": 22,
+  "routing": [
+    "/uc1/estimate",
+    "/uc2/deadline",
+    "/uc3/readiness"
+  ],
+  "regulatory_basis": [
+    "RSTP_ART_21",
+    "RSTP_ART_20"
+  ],
+  "verify_required_warnings": [
+    "VERIFY_REQUIRED: Training compensation eligibility depends on whether the player was previously registered as an amateur at the claiming club and whether the season-of-23rd-birthday rule applies. Verify with current RSTP Art. 20 before relying on this routing."
+  ]
+}

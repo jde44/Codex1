@@ -1,0 +1,27 @@
+{
+  "request_id": "a1b2c3d4-0000-0000-0000-000000000003",
+  "mechanism": "TRAINING_COMPENSATION",
+  "training_club_category": 3,
+  "receiving_club_category": 1,
+  "cost_per_year_usd": 30000,
+  "days_trained": 2190,
+  "years_trained": 5.9959,
+  "estimated_amount_usd": 179877.0,
+  "breakdown": [
+    {
+      "training_start_date": "2017-07-01",
+      "training_end_date": "2023-06-30",
+      "days_trained": 2190,
+      "years_trained": 5.9959,
+      "cost_per_year_usd": 30000,
+      "subtotal_usd": 179877.0
+    }
+  ],
+  "regulatory_basis": ["RSTP_ART_20", "RSTP_ANNEX_4"],
+  "verify_required_warnings": [
+    "VERIFY_REQUIRED: Category 3 training cost is an indicative figure; confirm the current FIFA-published amount.",
+    "VERIFY_REQUIRED: Training cost for Category 3 (30,000 USD/yr) must be verified against the current FIFA circular and confederation-specific schedule.",
+    "VERIFY_REQUIRED: Cost basis used is the training club's own category. RSTP Annex 4 Art. 3 may specify the new club's costs in some scenarios; verify the applicable formula for this transfer.",
+    "VERIFY_REQUIRED: Years-trained uses calendar days / 365.25. FIFA TMS counts full football seasons. Reconcile with TMS before any payment."
+  ]
+}

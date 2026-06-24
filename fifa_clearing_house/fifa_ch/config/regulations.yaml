@@ -1,0 +1,193 @@
+# FIFA Clearing House Navigator – Regulatory Configuration
+# All monetary amounts, deadlines, and rule references that drive
+# deterministic computation live here. Never hard-code these in engine code.
+#
+# verify_status options:
+#   VERIFIED           – matches a specific, publicly available FIFA text
+#   VERIFY_REQUIRED    – reasonable approximation; must be confirmed against
+#                        the current FIFA circular before production use
+
+regulations:
+  RSTP_ART_20:
+    title: "Training Compensation"
+    article: "Article 20"
+    document: "FIFA Regulations on the Status and Transfer of Players (RSTP)"
+    edition: "2022"
+    verify_status: "VERIFIED"
+    url: "https://digitalhub.fifa.com/m/f50b25b04a1a9c4e/original/Regulations_Status_Transfer_Players_e.pdf"
+    note: >
+      Applies when a player signs their first professional contract or when a
+      professional player under 23 transfers internationally.
+
+  RSTP_ART_21:
+    title: "Solidarity Mechanism"
+    article: "Article 21"
+    document: "FIFA Regulations on the Status and Transfer of Players (RSTP)"
+    edition: "2022"
+    verify_status: "VERIFIED"
+    note: "5 % of any transfer fee for international transfer of a professional."
+
+  RSTP_ANNEX_4:
+    title: "Training Compensation – Calculation"
+    article: "Annex 4"
+    document: "FIFA Regulations on the Status and Transfer of Players (RSTP)"
+    edition: "2022"
+    verify_status: "VERIFIED"
+    note: "Defines club categories and indicative training-cost amounts."
+
+  RSTP_ANNEX_5:
+    title: "Solidarity Mechanism – Distribution"
+    article: "Annex 5"
+    document: "FIFA Regulations on the Status and Transfer of Players (RSTP)"
+    edition: "2022"
+    verify_status: "VERIFIED"
+    note: "0.25 % per year ages 12-15; 0.5 % per year ages 16-23."
+
+solidarity_contribution:
+  total_rate: 0.05            # 5 % of transfer fee – RSTP Art. 21
+  verify_status: "VERIFIED"
+  citation: "RSTP_ART_21"
+  distribution:
+    age_12_to_15:
+      rate_per_year: 0.0025   # 0.25 % / year
+      verify_status: "VERIFIED"
+      citation: "RSTP_ANNEX_5"
+    age_16_to_23:
+      rate_per_year: 0.005    # 0.5 % / year
+      verify_status: "VERIFIED"
+      citation: "RSTP_ANNEX_5"
+  age_lower_bound: 12
+  age_upper_bound: 24         # exclusive (seasons up to and including age 23)
+  age_bracket_split: 16       # exclusive upper of lower bracket
+
+training_compensation:
+  # VERIFY_REQUIRED: Indicative amounts from FIFA Circular 1264 (2001) and
+  # subsequent confederation-level schedules. These figures change periodically
+  # and vary by confederation. Confirm the current amounts with FIFA TMS or
+  # the relevant confederation before any live calculation.
+  categories:
+    "1":
+      name: "Category I"
+      usd_per_year: 90000
+      verify_status: "VERIFY_REQUIRED"
+      note: "Typical top-division clubs in UEFA and CONMEBOL; confirm current amount."
+    "2":
+      name: "Category II"
+      usd_per_year: 60000
+      verify_status: "VERIFY_REQUIRED"
+      note: "Confirm current amount with FIFA circular."
+    "3":
+      name: "Category III"
+      usd_per_year: 30000
+      verify_status: "VERIFY_REQUIRED"
+      note: "Confirm current amount with FIFA circular."
+    "4":
+      name: "Category IV"
+      usd_per_year: 10000
+      verify_status: "VERIFY_REQUIRED"
+      note: "Typically developing-football-nation clubs; confirm current amount."
+
+  # VERIFY_REQUIRED: The applicable category used for cost lookup.
+  # RSTP Annex 4 Art. 3 references 'new club' costs in some scenarios; the
+  # actual formula depends on direction of transfer and confederation rules.
+  cost_basis: "TRAINING_CLUB_CATEGORY"
+  cost_basis_note: >
+    VERIFY_REQUIRED: Using training club's own category cost as the basis.
+    Verify against RSTP Annex 4 Art. 3 for applicable formula when new club
+    is a different category.
+  citation: "RSTP_ANNEX_4"
+
+deadlines:
+  training_compensation:
+    months_from_event: 6
+    trigger_event: "FIRST_PROFESSIONAL_CONTRACT_REGISTRATION"
+    verify_status: "VERIFY_REQUIRED"
+    citation: "RSTP_ART_20"
+    note: >
+      VERIFY_REQUIRED: The 6-month window is a widely-cited rule but the
+      exact trigger date definition should be confirmed in the current RSTP
+      and any applicable FIFA circular.
+  solidarity_contribution:
+    months_from_event: 6
+    trigger_event: "TRANSFER_REGISTRATION"
+    verify_status: "VERIFY_REQUIRED"
+    citation: "RSTP_ART_21"
+    note: >
+      VERIFY_REQUIRED: Verify the exact trigger event (registration date vs.
+      contract-signing date) with current RSTP and FIFA TMS documentation.
+
+readiness_checklists:
+  TRAINING_COMPENSATION:
+    citation: "RSTP_ART_20"
+    items:
+      - key: "player_registration_history"
+        description: "Complete player registration history for all clubs"
+        required: true
+        citation: "RSTP_ART_20"
+        verify_status: "VERIFIED"
+      - key: "training_period_evidence"
+        description: "Evidence of training seasons at the claiming club"
+        required: true
+        citation: "RSTP_ANNEX_4"
+        verify_status: "VERIFIED"
+      - key: "club_category_documentation"
+        description: "Official club category as recognised by association/confederation"
+        required: true
+        citation: "RSTP_ANNEX_4"
+        verify_status: "VERIFY_REQUIRED"
+        note: "VERIFY_REQUIRED: Confirm how category is officially documented."
+      - key: "player_dob_documentation"
+        description: "Certified player date-of-birth documentation"
+        required: true
+        citation: "RSTP_ART_20"
+        verify_status: "VERIFIED"
+      - key: "first_professional_contract_copy"
+        description: "Copy of first professional contract or transfer agreement"
+        required: true
+        citation: "RSTP_ART_20"
+        verify_status: "VERIFIED"
+      - key: "deadline_not_passed"
+        description: "Filing deadline has not yet passed"
+        required: true
+        citation: "RSTP_ART_20"
+        verify_status: "VERIFY_REQUIRED"
+      - key: "tms_submission_ready"
+        description: "FIFA Transfer Matching System (TMS) submission package prepared"
+        required: false
+        citation: "RSTP_ART_20"
+        verify_status: "VERIFY_REQUIRED"
+
+  SOLIDARITY_CONTRIBUTION:
+    citation: "RSTP_ART_21"
+    items:
+      - key: "player_registration_history"
+        description: "Complete player registration history ages 12-23"
+        required: true
+        citation: "RSTP_ART_21"
+        verify_status: "VERIFIED"
+      - key: "transfer_fee_documented"
+        description: "Transfer fee officially documented in transfer agreement"
+        required: true
+        citation: "RSTP_ART_21"
+        verify_status: "VERIFIED"
+      - key: "transfer_agreement_copy"
+        description: "Signed transfer agreement on file"
+        required: true
+        citation: "RSTP_ART_21"
+        verify_status: "VERIFIED"
+      - key: "bank_account_details"
+        description: "Club's bank account details for solidarity payment receipt"
+        required: true
+        citation: "RSTP_ART_21"
+        verify_status: "VERIFY_REQUIRED"
+        note: "VERIFY_REQUIRED: Confirm exact submission format required by FIFA."
+      - key: "training_period_calculations"
+        description: "Pro-rated solidarity breakdown calculations prepared"
+        required: true
+        citation: "RSTP_ANNEX_5"
+        verify_status: "VERIFIED"
+      - key: "deadline_not_passed"
+        description: "Filing deadline has not yet passed"
+        required: true
+        citation: "RSTP_ART_21"
+        verify_status: "VERIFY_REQUIRED"

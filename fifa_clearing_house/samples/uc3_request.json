@@ -1,0 +1,13 @@
+{
+  "mechanism": "SOLIDARITY_CONTRIBUTION",
+  "checklist": [
+    {"key": "player_registration_history",   "present": true},
+    {"key": "transfer_fee_documented",        "present": true},
+    {"key": "transfer_agreement_copy",        "present": true},
+    {"key": "bank_account_details",           "present": false},
+    {"key": "training_period_calculations",   "present": true},
+    {"key": "deadline_not_passed",            "present": true}
+  ],
+  "source": "manual",
+  "confirmed": true
+}

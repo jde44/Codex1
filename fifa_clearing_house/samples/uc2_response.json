@@ -1,0 +1,14 @@
+{
+  "request_id": "a1b2c3d4-0000-0000-0000-000000000004",
+  "mechanism": "TRAINING_COMPENSATION",
+  "trigger_event_type": "FIRST_PROFESSIONAL_CONTRACT_REGISTRATION",
+  "trigger_event_date": "2024-02-01",
+  "deadline_date": "2024-08-01",
+  "days_remaining": 38,
+  "deadline_passed": false,
+  "regulatory_basis": ["RSTP_ART_20"],
+  "verify_required_warnings": [
+    "VERIFY_REQUIRED: The 6-month window is a widely-cited rule but the exact trigger date definition should be confirmed in the current RSTP and any applicable FIFA circular.",
+    "VERIFY_REQUIRED: The 6-month deadline window is derived from config (citation: RSTP_ART_20). Confirm the exact deadline against the current RSTP and any relevant FIFA circular before relying on this date."
+  ]
+}

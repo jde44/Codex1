@@ -1,0 +1,50 @@
+{
+  "request_id": "a1b2c3d4-0000-0000-0000-000000000002",
+  "mechanism": "SOLIDARITY_CONTRIBUTION",
+  "transfer_fee_usd": 5000000.0,
+  "estimated_amount_usd": 250000.0,
+  "breakdown": [
+    {
+      "club_name": "Juventud FC",
+      "from_age": 12,
+      "to_age": 16,
+      "effective_from_age": 12,
+      "effective_to_age": 16,
+      "lower_bracket_years": 4,
+      "upper_bracket_years": 0,
+      "rate_lower": "0.25%/yr (ages 12-15)",
+      "rate_upper": "0.50%/yr (ages 16-23)",
+      "amount_usd": 50000.0
+    },
+    {
+      "club_name": "River Plate",
+      "from_age": 16,
+      "to_age": 20,
+      "effective_from_age": 16,
+      "effective_to_age": 20,
+      "lower_bracket_years": 0,
+      "upper_bracket_years": 4,
+      "rate_lower": "0.25%/yr (ages 12-15)",
+      "rate_upper": "0.50%/yr (ages 16-23)",
+      "amount_usd": 100000.0
+    },
+    {
+      "club_name": "Club Atletico",
+      "from_age": 20,
+      "to_age": 23,
+      "effective_from_age": 20,
+      "effective_to_age": 23,
+      "lower_bracket_years": 0,
+      "upper_bracket_years": 3,
+      "rate_lower": "0.25%/yr (ages 12-15)",
+      "rate_upper": "0.50%/yr (ages 16-23)",
+      "amount_usd": 75000.0
+    }
+  ],
+  "regulatory_basis": ["RSTP_ART_21", "RSTP_ANNEX_5"],
+  "verify_required_warnings": [
+    "VERIFY_REQUIRED: Training-period dates must be confirmed in FIFA TMS.",
+    "VERIFY_REQUIRED: Transfer fee must be the final settled amount including all add-ons triggered at the time of calculation.",
+    "VERIFY_REQUIRED: Age brackets use integer ages as supplied; FIFA TMS uses full seasons. Reconcile with TMS output before any payment."
+  ]
+}

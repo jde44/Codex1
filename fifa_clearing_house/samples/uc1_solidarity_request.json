@@ -1,0 +1,26 @@
+{
+  "mechanism": "SOLIDARITY_CONTRIBUTION",
+  "transfer_fee_usd": 5000000.00,
+  "training_periods": [
+    {
+      "club_name": "Juventud FC",
+      "from_age": 12,
+      "to_age": 16,
+      "confederation": "CONMEBOL"
+    },
+    {
+      "club_name": "River Plate",
+      "from_age": 16,
+      "to_age": 20,
+      "confederation": "CONMEBOL"
+    },
+    {
+      "club_name": "Club Atletico",
+      "from_age": 20,
+      "to_age": 23,
+      "confederation": "CONMEBOL"
+    }
+  ],
+  "source": "manual",
+  "confirmed": true
+}

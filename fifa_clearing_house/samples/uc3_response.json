@@ -1,0 +1,67 @@
+{
+  "request_id": "a1b2c3d4-0000-0000-0000-000000000005",
+  "mechanism": "SOLIDARITY_CONTRIBUTION",
+  "overall_readiness": "PARTIAL",
+  "checklist_results": [
+    {
+      "key": "player_registration_history",
+      "description": "Complete player registration history ages 12-23",
+      "required": true,
+      "present": true,
+      "status": "PASS",
+      "citation": "RSTP_ART_21",
+      "verify_status": "VERIFIED"
+    },
+    {
+      "key": "transfer_fee_documented",
+      "description": "Transfer fee officially documented in transfer agreement",
+      "required": true,
+      "present": true,
+      "status": "PASS",
+      "citation": "RSTP_ART_21",
+      "verify_status": "VERIFIED"
+    },
+    {
+      "key": "transfer_agreement_copy",
+      "description": "Signed transfer agreement on file",
+      "required": true,
+      "present": true,
+      "status": "PASS",
+      "citation": "RSTP_ART_21",
+      "verify_status": "VERIFIED"
+    },
+    {
+      "key": "bank_account_details",
+      "description": "Club's bank account details for solidarity payment receipt",
+      "required": true,
+      "present": false,
+      "status": "FAIL",
+      "citation": "RSTP_ART_21",
+      "verify_status": "VERIFY_REQUIRED"
+    },
+    {
+      "key": "training_period_calculations",
+      "description": "Pro-rated solidarity breakdown calculations prepared",
+      "required": true,
+      "present": true,
+      "status": "PASS",
+      "citation": "RSTP_ANNEX_5",
+      "verify_status": "VERIFIED"
+    },
+    {
+      "key": "deadline_not_passed",
+      "description": "Filing deadline has not yet passed",
+      "required": true,
+      "present": true,
+      "status": "PASS",
+      "citation": "RSTP_ART_21",
+      "verify_status": "VERIFY_REQUIRED"
+    }
+  ],
+  "missing_required_items": ["bank_account_details"],
+  "regulatory_basis": ["RSTP_ART_21", "RSTP_ANNEX_5"],
+  "verify_required_warnings": [
+    "VERIFY_REQUIRED [bank_account_details]: VERIFY_REQUIRED: Confirm exact submission format required by FIFA.",
+    "VERIFY_REQUIRED [deadline_not_passed]: Filing deadline has not yet passed"
+  ]
+}

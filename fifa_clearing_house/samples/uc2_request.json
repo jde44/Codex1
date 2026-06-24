@@ -1,0 +1,7 @@
+{
+  "mechanism": "TRAINING_COMPENSATION",
+  "trigger_event_type": "FIRST_PROFESSIONAL_CONTRACT_REGISTRATION",
+  "trigger_event_date": "2024-02-01",
+  "source": "manual",
+  "confirmed": true
+}
