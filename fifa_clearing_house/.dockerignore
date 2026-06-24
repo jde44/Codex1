@@ -1,0 +1,8 @@
+**/__pycache__
+**/*.pyc
+**/*.pyo
+.pytest_cache
+audit_log.ndjson
+*.ndjson
+.git
+.gitignore

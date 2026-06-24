@@ -1,0 +1,34 @@
+services:
+  # ── live API ──────────────────────────────────────────────────────────────
+  app:
+    build:
+      context: .
+      target: runtime
+    ports:
+      - "8000:8000"
+    environment:
+      AUDIT_LOG_PATH: /data/audit_log.ndjson
+      # Optional: set ANTHROPIC_API_KEY here or in a .env file to enable
+      # live AI extraction at POST /ai/extract
+      # ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+    volumes:
+      - audit_data:/data
+    healthcheck:
+      test: ["CMD", "python", "-c",
+             "import urllib.request; urllib.request.urlopen('http://localhost:8000/docs')"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # ── test runner (run with: docker compose run --rm test) ─────────────────
+  test:
+    build:
+      context: .
+      target: test
+    environment:
+      AUDIT_LOG_PATH: /tmp/test_audit.ndjson
+    profiles:
+      - test
+
+volumes:
+  audit_data:
