@@ -41,13 +41,13 @@ Use Node 22 LTS or newer for this project. If Ubuntu's default Node is older, in
 Recommended path:
 
 ```bash
-sudo mkdir -p /opt/zess-ai
-sudo chown -R ubuntu:ubuntu /opt/zess-ai
-cd /opt/zess-ai
+sudo mkdir -p /opt/rsk-ai
+sudo chown -R ubuntu:ubuntu /opt/rsk-ai
+cd /opt/rsk-ai
 git clone <your-repo-url> .
 ```
 
-If this is not in Git yet, copy the project folder to `/opt/zess-ai` with `scp` or `rsync`.
+If this is not in Git yet, copy the project folder to `/opt/rsk-ai` with `scp` or `rsync`.
 
 ## 4. Configure Environment
 
@@ -70,18 +70,18 @@ SUPABASE_SERVICE_ROLE_KEY=
 npm install
 npm run test
 npm run build
-sudo cp deploy/oracle/zess-ai.service /etc/systemd/system/zess-ai.service
+sudo cp deploy/oracle/rsk-ai.service /etc/systemd/system/rsk-ai.service
 sudo systemctl daemon-reload
-sudo systemctl enable zess-ai
-sudo systemctl start zess-ai
-sudo systemctl status zess-ai
+sudo systemctl enable rsk-ai
+sudo systemctl start rsk-ai
+sudo systemctl status rsk-ai
 ```
 
 ## 6. Configure Nginx
 
 ```bash
-sudo cp deploy/oracle/nginx.zess-ai.conf /etc/nginx/sites-available/zess-ai
-sudo ln -s /etc/nginx/sites-available/zess-ai /etc/nginx/sites-enabled/zess-ai
+sudo cp deploy/oracle/nginx.rsk-ai.conf /etc/nginx/sites-available/rsk-ai
+sudo ln -s /etc/nginx/sites-available/rsk-ai /etc/nginx/sites-enabled/rsk-ai
 sudo nginx -t
 sudo systemctl reload nginx
 ```
@@ -106,7 +106,7 @@ sudo certbot --nginx -d your-domain.com
 ```bash
 curl -I http://localhost:3000
 curl -I http://<oracle-public-ip>
-sudo journalctl -u zess-ai -f
+sudo journalctl -u rsk-ai -f
 sudo tail -f /var/log/nginx/access.log
 ```
 

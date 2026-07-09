@@ -9,32 +9,27 @@ const navGroups = [
   {
     label: "Ready",
     items: [
-      ["Data", "/data-governance"],
-      ["Shadow AI", "/shadow-ai"],
-      ["Controls", "/risk-controls"]
+      ["Use Case Intake", "/use-cases"],
+      ["Data Exposure", "/data-governance"],
+      ["Risk Scoring", "/risk-controls"]
     ]
   },
   {
     label: "Set",
     items: [
-      ["Intake", "/use-cases"],
-      ["Workflows", "/workflows"],
-      ["Agents", "/orchestration"],
-      ["Models & Cost", "/cost"],
-      ["Tokens", "/token-governance"],
-      ["Memos", "/memos"]
+      ["PARCM Mapper", "/workflows"],
+      ["Controls", "/risk-controls"],
+      ["Testing Plan", "/testing"],
+      ["Review Handoffs", "/orchestration"]
     ]
   },
   {
-    label: "Grow",
+    label: "Know",
     items: [
       ["Dashboard", "/dashboard"],
-      ["Testing & EWS", "/testing"],
-      ["Learning", "/learning"],
-      ["Meta Harness", "/meta-harness"],
-      ["Memory", "/memory"],
-      ["Skills", "/skills"],
+      ["Governance Memo", "/memos"],
       ["Audit", "/audit"],
+      ["Issues", "/alerts"],
       ["Settings", "/settings"]
     ]
   }

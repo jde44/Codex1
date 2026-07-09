@@ -1,17 +1,16 @@
-# Zess AI LLM Agent Handoff
+# RSK AI LLM Agent Handoff
 
 ## Current State
 
-Zess AI is a Next.js App Router application for an AI governance command center. It is built as a SaaS-style front end with public marketing pages, a member workspace, deterministic mock governance agents, Supabase-ready schema/RLS files, and Oracle Free Tier deployment notes.
+RSK AI is a Next.js App Router application for AI use case governance. It is built as a SaaS-style front end with public marketing pages, a member workspace, deterministic mock governance agents, Supabase-ready schema/RLS files, and Oracle Free Tier deployment notes.
 
-The app has been renamed from "Agentic Risk Governance Command Center" to **Zess AI** across visible app chrome, metadata, package name, README, deployment files, and refinement docs.
+The app has been renamed from "Agentic Risk Governance Command Center" to **RSK AI** across visible app chrome, metadata, package name, README, deployment files, and refinement docs.
 
 ## Repository Access
 
 - GitHub repo: `https://github.com/jde44/Codex1.git`
-- Branch: `ARGBriX`
-- Product rename commit: `1c89b32 Rename app to Zess AI`
-- Pull request creation link: `https://github.com/jde44/Codex1/pull/new/ARGBriX`
+- Branch: current RSK AI working branch
+- Product reset: Ready Set Know / RSK AI
 
 The branch was pushed successfully with the full app scaffold under the dated project folder.
 
@@ -60,8 +59,8 @@ lib/security/prompt-firewall.ts
 lib/meta-harness/assessment.ts
 lib/supabase/schema.sql
 lib/supabase/rls-policies.sql
-deploy/oracle/zess-ai.service
-deploy/oracle/nginx.zess-ai.conf
+deploy/oracle/rsk-ai.service
+deploy/oracle/nginx.rsk-ai.conf
 docs/security/SECURITY_TEST_PLAN.md
 ```
 
@@ -175,20 +174,20 @@ Internal feeder route:
 /app-library
 ```
 
-The app is organized around three parent operating buckets:
+The app is organized around three parent operating phases:
 
-- Ready: data governance readiness, shadow AI, security/control readiness, third-party model oversight, sovereignty, macro-risk watch.
-- Set: use case intake, PARCM workflow setup, orchestration, controls, model routing, token budgets, tests, memos.
-- Grow: board KPIs, early warning signals, program drift, context/model drift, learning loop, training, remediation, audit updates.
+- Ready: AI use case intake, ownership capture, data/regulatory exposure, risk tiering, and reviewer assignment.
+- Set: PARCM workflow setup, risk/control mapping, evidence requirements, monitoring, and escalation.
+- Know: governance memo, evidence pack, decision log, issue log, and revisit triggers.
 
 ## Recent UX Decisions
 
 - Public home is blue/white bank-style, inspired by the provided Truist source reference.
 - The old `/demo` page was removed. Demo-like behavior now uses sample operating records across the home and workspace.
 - `/login` is now the member workspace front door, not a plain auth card.
-- Workspace side navigation is an accordion. Ready, Set, and Grow are parent buttons. Only the active bucket expands.
+- Workspace side navigation is an accordion. Ready, Set, and Know are parent buttons. Only the active bucket expands.
 - Top nav and workspace nav both show active state.
-- App Library is not front-stage. It remains an internal version-controlled feeder for regulatory/reference update proposals.
+- App Library and broader GRC modules are not front-stage. They remain future/advanced modules until they support the three MVP use cases.
 - Copy was compressed across major headers and high-traffic pages to reduce wordiness.
 
 ## Architecture Notes
@@ -200,8 +199,8 @@ Key architecture concepts:
 - Supabase-ready auth/database architecture
 - Supabase RLS starter policies
 - Provider abstraction for future OpenAI, Anthropic, Bedrock, Vertex, and local model endpoints
-- Model mix governance rather than hard-coding one provider
-- Deterministic agents for intake, risk, data governance, shadow AI, prompt firewall, app library proposals, learning loop, and meta-harness assessment
+- Provider-agnostic architecture rather than hard-coding one provider
+- Deterministic agents for intake, risk classification, PARCM control mapping, evidence planning, memo generation, and meta-harness assessment
 - Mock data located mainly in `lib/mock-data/platform.ts`
 - Type definitions in `lib/types.ts`
 - Supabase SQL in `lib/supabase/schema.sql` and `lib/supabase/rls-policies.sql`
@@ -236,8 +235,8 @@ Oracle deployment assets:
 
 ```text
 deploy/oracle/README.md
-deploy/oracle/zess-ai.service
-deploy/oracle/nginx.zess-ai.conf
+deploy/oracle/rsk-ai.service
+deploy/oracle/nginx.rsk-ai.conf
 Dockerfile
 .dockerignore
 ```
@@ -245,7 +244,7 @@ Dockerfile
 Expected Oracle app path:
 
 ```text
-/opt/zess-ai
+/opt/rsk-ai
 ```
 
 ## Known Repo Caveats
@@ -262,7 +261,7 @@ If continuing work, stage only this app directory unless the user explicitly ask
 
 ## Suggested Next Steps
 
-1. Open a PR from `ARGBriX` into the target base branch.
+1. Open a PR from the current RSK AI working branch into the target base branch.
 2. Add a lockfile with a clean dependency install if this is moving toward deployment.
 3. Add real Supabase Auth and route protection middleware.
 4. Add repository-layer functions so pages can switch from mock data to Supabase.

@@ -6,31 +6,21 @@ import { offeringBuckets } from "@/lib/offerings";
 import { bucketNarratives, operatingScenarios } from "@/lib/home-test-data";
 
 const skillRoutes: Record<string, string> = {
-  "SIFI-grade data governance readiness": "/data-governance",
-  "Federated ownership and stewardship assessment": "/data-governance",
-  "Security architecture and access control review": "/risk-controls",
-  "Third-party model and vendor oversight": "/risk-controls",
-  "Data sovereignty and residency assessment": "/data-governance",
-  "Cloud data platform signal intake": "/shadow-ai",
-  "AI macro-risk and regulatory trend watch": "/risk-controls",
-  "Shadow AI discovery and conversion": "/shadow-ai",
   "AI use case intake": "/use-cases",
+  "Risk tier classification": "/use-cases",
+  "Owner and reviewer assignment": "/use-cases",
+  "Data and regulatory exposure capture": "/data-governance",
+  "Go pause review status": "/dashboard",
   "PARCM workflow setup": "/workflows",
-  "Agent orchestration and handoffs": "/orchestration",
   "Risk and control mapping": "/risk-controls",
-  "Model mix and routing decisions": "/cost",
-  "Token budget governance": "/token-governance",
-  "Testing and eval setup": "/testing",
+  "Evidence requirement mapping": "/risk-controls",
+  "Control owner assignment": "/risk-controls",
+  "Monitoring and escalation plan": "/testing",
   "Governance memo generation": "/memos",
-  "Board KPI monitoring": "/dashboard",
-  "Early warning signals": "/testing",
-  "Regulatory expectation monitoring": "/testing",
-  "Program drift detection": "/alerts",
-  "Model and context drift monitoring": "/testing",
-  "Shadow AI trend reporting": "/shadow-ai",
-  "Lessons learned capture": "/learning",
-  "Role-based training triggers": "/learning",
-  "Remediation and audit trail updates": "/audit"
+  "Evidence pack assembly": "/memos",
+  "Decision log": "/audit",
+  "Issue tracker": "/testing",
+  "Monitoring summary": "/memos"
 };
 
 export function HomeBucketPanel() {
@@ -40,12 +30,12 @@ export function HomeBucketPanel() {
     [selectedId]
   );
   const selectedScenario = operatingScenarios.find(
-    (scenario) => scenario.bucket.toLowerCase() === selected.id
+    (scenario) => scenario.bucket.toLowerCase() === selected.id || scenario.bucket === selected.name
   );
   const selectedNarrative = bucketNarratives[selected.id as keyof typeof bucketNarratives];
 
   return (
-    <section className="home-action-panel" aria-label="Ready Set Grow command panel">
+    <section className="home-action-panel" aria-label="Ready Set Know command panel">
       <div className="home-action-tabs" role="tablist" aria-label="Choose operating bucket">
         {offeringBuckets.map((bucket) => (
           <button
@@ -97,7 +87,7 @@ export function HomeBucketPanel() {
       <div className="featured-skills">
         <div className="frame-header">
           <span>Featured skills</span>
-          <strong>{selected.name} bucket</strong>
+          <strong>{selected.name} phase</strong>
         </div>
         <div className="featured-skill-list">
           {selected.capabilities.map((capability) => (

@@ -2,99 +2,97 @@ export const offeringBuckets = [
   {
     id: "ready",
     name: "Ready",
-    label: "Prepare the enterprise",
+    label: "Assess and classify",
     summary:
-      "Assess data, security, architecture, ownership, and third-party AI exposure before scale.",
-    outcome: "Readiness posture with owners, gaps, controls, and evidence.",
+      "Submit AI use cases, capture ownership and exposure, classify risk, and identify the review path before deployment.",
+    outcome: "Risk-tiered AI use case with owner, missing information, required reviewers, and approval posture.",
     metrics: [
-      { label: "Readiness score", value: "62", detail: "Conditional for controlled pilot" },
-      { label: "Critical gaps", value: "3", detail: "Lineage, CDEs, sensitive data routing" },
-      { label: "Policy embeds", value: "10", detail: "Data, report, process, model risk, retention" }
+      { label: "Intake status", value: "Submitted", detail: "Owner, workflow, data, model, and launch timing captured" },
+      { label: "Risk tier", value: "High", detail: "Regulated reporting and credit-decisioning exposure" },
+      { label: "Review path", value: "4 teams", detail: "Risk, compliance, data, and report owner review required" }
     ],
     capabilities: [
-      "SIFI-grade data governance readiness",
-      "Federated ownership and stewardship assessment",
-      "Security architecture and access control review",
-      "Third-party model and vendor oversight",
-      "Data sovereignty and residency assessment",
-      "Cloud data platform signal intake",
-      "AI macro-risk and regulatory trend watch",
-      "Shadow AI discovery and conversion"
+      "AI use case intake",
+      "Risk tier classification",
+      "Owner and reviewer assignment",
+      "Data and regulatory exposure capture",
+      "Go pause review status"
     ],
     agents: [
-      "Data Governance Agent",
-      "Shadow AI Tracking Agent",
-      "Third-Party Model Oversight Agent",
-      "Security Architecture Readiness Agent"
+      "Use Case Intake Agent",
+      "Risk Classifier Agent",
+      "Reviewer Assignment Agent"
     ],
-    primaryRoute: "/data-governance"
+    primaryRoute: "/use-cases"
   },
   {
     id: "set",
     name: "Set",
-    label: "Stand up sustainable governance",
+    label: "Map the workflow",
     summary:
-      "Move use cases through intake, risk, controls, model routing, testing, approval, and evidence.",
-    outcome: "Governed workflows with policy-to-control traceability.",
+      "Use PARCM to connect process, activities, risks, controls, evidence requirements, monitoring, and escalation.",
+    outcome: "Workflow control map with policy-to-control traceability and open gaps.",
     metrics: [
-      { label: "Use cases in flow", value: "24", detail: "7 high-risk workflows" },
-      { label: "Pending approvals", value: "9", detail: "Compliance, data, model risk" },
-      { label: "Evidence package", value: "77%", detail: "Target 95% before launch" }
+      { label: "PARCM map", value: "Draft", detail: "Process, activities, risks, controls, and monitoring linked" },
+      { label: "Control gaps", value: "3", detail: "Lineage, CDE certification, and sensitivity controls" },
+      { label: "Evidence readiness", value: "77%", detail: "Target 95% before monitored launch" }
     ],
     capabilities: [
-      "AI use case intake",
       "PARCM workflow setup",
-      "Agent orchestration and handoffs",
       "Risk and control mapping",
-      "Model mix and routing decisions",
-      "Token budget governance",
-      "Testing and eval setup",
-      "Governance memo generation"
+      "Evidence requirement mapping",
+      "Control owner assignment",
+      "Monitoring and escalation plan"
     ],
     agents: [
-      "Orchestration Agent",
-      "Risk Classifier Agent",
       "Control Mapper Agent",
-      "Model Strategy and Routing Agent"
+      "Evidence Requirement Agent",
+      "Monitoring Plan Agent"
     ],
     primaryRoute: "/workflows"
   },
   {
-    id: "grow",
-    name: "Grow",
-    label: "Monitor, learn, and scale",
+    id: "know",
+    name: "Know",
+    label: "Produce decision memory",
     summary:
-      "Track AI KPIs, drift, lessons, training, escalation, and remediation.",
-    outcome: "Continuous monitoring with learning and remediation.",
+      "Generate governance memos, evidence packs, decision logs, issue logs, and monitoring summaries that auditors can follow.",
+    outcome: "Audit-ready governance memo with evidence, approvals, issues, and revisit triggers.",
     metrics: [
-      { label: "EWS alerts", value: "5", detail: "2 require escalation" },
-      { label: "Training actions", value: "2", detail: "Prompt injection and AI intake" },
-      { label: "Lessons captured", value: "3", detail: "Fed back into controls" }
+      { label: "Memo state", value: "Conditional", detail: "Approval pending evidence closure" },
+      { label: "Open issues", value: "3", detail: "Each has owner, due date, and escalation path" },
+      { label: "Revisit trigger", value: "30 days", detail: "Post-launch monitoring review cadence" }
     ],
     capabilities: [
-      "Board KPI monitoring",
-      "Early warning signals",
-      "Regulatory expectation monitoring",
-      "Program drift detection",
-      "Model and context drift monitoring",
-      "Shadow AI trend reporting",
-      "Lessons learned capture",
-      "Role-based training triggers",
-      "Remediation and audit trail updates"
+      "Governance memo generation",
+      "Evidence pack assembly",
+      "Decision log",
+      "Issue tracker",
+      "Monitoring summary"
     ],
     agents: [
-      "Early Warning Signal Monitoring Agent",
-      "Lessons Learned and Training Agent",
-      "Token and Cost Governance Agent",
-      "Prompt and Context Risk Agent"
+      "Governance Memo Agent",
+      "Evidence Pack Agent",
+      "Decision Memory Agent"
     ],
-    primaryRoute: "/testing"
+    primaryRoute: "/memos"
   }
 ];
 
+export const futureModules = [
+  "Prompt Firewall",
+  "Shadow AI Detector",
+  "Token Budget Drift",
+  "Model Mix Governance",
+  "Board KPIs",
+  "Early Warnings",
+  "Full Regulatory Report Builder",
+  "Clinical / HR Decision Support"
+];
+
 export const boardKpis = [
-  { label: "AI readiness", value: "Conditional", detail: "3 blockers before monitored launch" },
-  { label: "Governance flow", value: "24", detail: "Active use cases across the enterprise" },
-  { label: "Program drift", value: "Watch", detail: "Memory drift and spend spike under review" },
-  { label: "Enterprise learning", value: "3", detail: "Lessons converted into training and controls" }
+  { label: "Use case", value: "Reporting AI", detail: "Variance commentary and anomaly review" },
+  { label: "Approval posture", value: "Review", detail: "High-risk workflow pending evidence closure" },
+  { label: "PARCM coverage", value: "77%", detail: "Controls mapped, three gaps open" },
+  { label: "Decision memory", value: "Draft", detail: "Governance memo ready for reviewer edits" }
 ];

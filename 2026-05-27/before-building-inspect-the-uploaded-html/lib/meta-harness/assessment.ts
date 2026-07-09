@@ -159,7 +159,7 @@ export function generateMetaHarnessAssessment(): MetaHarnessAssessment {
     paretoBest,
     appOptimizations: [
       "Expose a Meta Harness Center so reviewers can see validation posture instead of hidden developer checks.",
-      "Make Ready, Set, Grow modules inherit acceptance checks before artifacts are considered governed.",
+      "Make Ready, Set, Know modules inherit acceptance checks before artifacts are considered governed.",
       "Use run traces as audit evidence for product changes, agent changes, and deployment changes.",
       "Convert repeated failures into backlog items, training updates, and stronger tests."
     ],
@@ -171,7 +171,7 @@ export function generateMetaHarnessAssessment(): MetaHarnessAssessment {
     ],
     runTrace: {
       id: "mh-run-current",
-      task: "Optimize Zess AI app and governed skills using the meta-harness model.",
+      task: "Optimize RSK AI app and governed skills using the meta-harness model.",
       harnessUsed: [
         "Project instructions",
         "Meta-harness skill",

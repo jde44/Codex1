@@ -4,8 +4,8 @@ import { SiteNav } from "@/components/marketing/site-nav";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Zess AI",
-  description: "AI governance operating layer for regulated organizations."
+  title: "RSK AI | Ready Set Know",
+  description: "Govern AI before risk scales."
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -15,8 +15,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <div className="site-shell">
           <header className="topbar">
             <Link className="brand" href="/">
-              <span className="brand-mark">ZAI</span>
-              <span>Zess AI</span>
+              <span className="brand-mark">RSK</span>
+              <span>Ready Set Know</span>
             </Link>
             <SiteNav />
           </header>

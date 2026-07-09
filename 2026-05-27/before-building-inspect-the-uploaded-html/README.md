@@ -1,16 +1,18 @@
-# Zess AI
+# RSK AI
 
-Production-grade Next.js scaffold for an enterprise AI governance SaaS application. The app is now a standalone implementation with a public website, member workspace, mock governance engine, and Supabase-ready data model.
+Production-grade Next.js scaffold for Ready Set Know / RSK AI, an enterprise AI governance SaaS application. The reset focuses the product on AI use case governance, PARCM workflow mapping, and audit-ready evidence generation.
 
 ## What Is Included
 
-- Public marketing website with luxury enterprise positioning
+- Public marketing website for Ready Set Know
 - Member login gate and authenticated workspace routes
-- Dashboard, intake, workflow command center, orchestration, data governance, shadow AI, risk/control matrix, model mix, token budgets, memory, skills, testing/EWS, lessons learned/training, memos, audit, and settings pages
-- Mock data for organizations, use cases, workflows, agents, handoffs, controls, model decisions, token usage, memory, skills, evals, alerts, memos, and audit events
+- Dashboard, use case intake, PARCM mapper, risk scoring, evidence vault, decision log, issue tracker, governance memo, audit, and settings pages
+- Mock data for organizations, use cases, workflows, agents, handoffs, controls, evidence, issues, memos, and audit events
 - Deterministic local agent assessment functions
 - Provider-ready interfaces for OpenAI, Anthropic, AWS Bedrock, Google Vertex AI, and local/open-source endpoints
 - Supabase schema and starter RLS policy files
+- `rsk-ai-product-truth.md` as the source of truth
+- ADRs in `docs/adr/`
 - Product refinement docs in `docs/refinement/`
 - Security test plan in `docs/security/SECURITY_TEST_PLAN.md`
 
@@ -44,18 +46,18 @@ Deployment assets:
 - `Dockerfile`
 - `.dockerignore`
 - `deploy/oracle/README.md`
-- `deploy/oracle/zess-ai.service`
-- `deploy/oracle/nginx.zess-ai.conf`
+- `deploy/oracle/rsk-ai.service`
+- `deploy/oracle/nginx.rsk-ai.conf`
 
 High-level deployment path:
 
 1. Create an Ubuntu VM in Oracle Cloud.
 2. Open inbound `80` and `443` in the Oracle VCN security rules.
 3. SSH into the VM and install Node, npm, Git, and Nginx.
-4. Copy or clone this repo into `/opt/zess-ai`.
+4. Copy or clone this repo into `/opt/rsk-ai`.
 5. Run `npm install`, `npm run test`, and `npm run build`.
-6. Install `deploy/oracle/zess-ai.service` as a systemd service.
-7. Install `deploy/oracle/nginx.zess-ai.conf` as the Nginx reverse proxy.
+6. Install `deploy/oracle/rsk-ai.service` as a systemd service.
+7. Install `deploy/oracle/nginx.rsk-ai.conf` as the Nginx reverse proxy.
 
 Full instructions are in `deploy/oracle/README.md`.
 
@@ -84,22 +86,23 @@ Run the SQL files in order:
 - `/workflows`
 - `/orchestration`
 - `/data-governance`
-- `/shadow-ai`
 - `/risk-controls`
+- `/testing`
+- `/memos`
+- `/audit`
+- `/alerts`
+- `/settings`
+
+Future/advanced routes still exist in the prototype but are parked from the MVP promise:
+
+- `/shadow-ai`
 - `/cost`
 - `/token-governance`
 - `/memory`
 - `/skills`
-- `/testing`
 - `/learning`
 - `/meta-harness`
-- `/memos`
-- `/audit`
-- `/settings`
-
-Internal feeder route:
-
-- `/app-library` version-controlled regulatory and best-practice source feeder for governed update proposals
+- `/app-library`
 
 ## Architecture Notes
 
@@ -112,7 +115,7 @@ The first build uses deterministic mock data. Live LLM APIs are intentionally no
 - `EvalRunner`
 - `GovernanceMemoGenerator`
 
-This keeps the app model-mix ready instead of binding it to one provider.
+This keeps the app model-ready instead of binding it to one provider, while deterministic risk tiering remains separate from generated narrative.
 
 ## Meta-Harness Layer
 

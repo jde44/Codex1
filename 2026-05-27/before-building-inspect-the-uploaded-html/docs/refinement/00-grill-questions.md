@@ -1,6 +1,6 @@
 # Grill Questions For Product Refinement
 
-Use these questions to sharpen the Zess AI before go-live. The purpose is to reduce noise, clarify buyer value, and decide what belongs in the first public demo.
+Use these questions to sharpen the RSK AI before go-live. The purpose is to reduce noise, clarify buyer value, and decide what belongs in the first public demo.
 
 ## 1. Buyer And Audience
 

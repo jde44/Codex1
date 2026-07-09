@@ -61,8 +61,8 @@ export function SiteNav() {
       <Link className={navClass(pathname, "/product#set", currentHash, "product")} href="/product#set">
         Set
       </Link>
-      <Link className={navClass(pathname, "/product#grow", currentHash, "product")} href="/product#grow">
-        Grow
+      <Link className={navClass(pathname, "/product#know", currentHash, "product")} href="/product#know">
+        Know
       </Link>
       <Link className={navClass(pathname, "/dashboard", currentHash, "workspace")} href="/dashboard">
         Workspace

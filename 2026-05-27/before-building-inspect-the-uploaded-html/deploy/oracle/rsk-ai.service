@@ -1,13 +1,13 @@
 [Unit]
-Description=Zess AI
+Description=RSK AI
 After=network.target
 
 [Service]
 Type=simple
-WorkingDirectory=/opt/zess-ai
+WorkingDirectory=/opt/rsk-ai
 Environment=NODE_ENV=production
 Environment=PORT=3000
-EnvironmentFile=-/opt/zess-ai/.env.production
+EnvironmentFile=-/opt/rsk-ai/.env.production
 ExecStart=/usr/bin/npm run start
 Restart=always
 RestartSec=10

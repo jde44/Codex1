@@ -10,8 +10,7 @@ export default function DashboardPage() {
       "Active AI use cases",
       "High-risk AI use cases",
       "Pending approvals",
-      "Monthly token spend",
-      "Early warning signals",
+      "Open control gaps",
       "Evidence completion"
     ].includes(metric.label)
   );
@@ -19,7 +18,7 @@ export default function DashboardPage() {
   return (
     <WorkspaceShell
       title="Workspace Dashboard"
-      subtitle="Readiness, setup, and growth at a glance."
+      subtitle="Use case intake, PARCM mapping, evidence, and decision memory at a glance."
     >
       <section className="dashboard-command">
         {offeringBuckets.map((bucket) => (
@@ -42,7 +41,7 @@ export default function DashboardPage() {
         ))}
       </section>
 
-      <section className="kpi-strip" aria-label="Board AI KPI summary">
+      <section className="kpi-strip" aria-label="RSK AI governance summary">
         {boardKpis.map((kpi) => (
           <article key={kpi.label}>
             <span>{kpi.label}</span>

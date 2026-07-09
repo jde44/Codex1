@@ -23,15 +23,10 @@ export const dashboardMetrics = [
   { label: "High-risk AI use cases", value: "7", detail: "4 pending approval" },
   { label: "Open control gaps", value: "11", detail: "3 tied to regulated reporting" },
   { label: "Pending approvals", value: "9", detail: "Compliance, data, model risk" },
-  { label: "Monthly token spend", value: "$3,850", detail: "77% of monthly budget" },
-  { label: "Budget utilization", value: "77%", detail: "Escalates at 85%" },
-  { label: "Highest cost model", value: "Frontier reasoning", detail: "$1,460 projected" },
-  { label: "Highest cost agent", value: "Finance writer", detail: "38% of token burn" },
-  { label: "Early warning signals", value: "5", detail: "2 require escalation" },
   { label: "Evidence completion", value: "77%", detail: "Target is 95% before launch" },
   { label: "Awaiting review", value: "4", detail: "Workflow gates blocked" },
-  { label: "Skills pending approval", value: "6", detail: "2 high-risk updates" },
-  { label: "Memory reviews", value: "3", detail: "1 sensitive exclusion" }
+  { label: "Decision logs", value: "12", detail: "Approval rationale captured" },
+  { label: "Open issues", value: "3", detail: "Owners and due dates assigned" }
 ];
 
 export const agents: AgentDefinition[] = [

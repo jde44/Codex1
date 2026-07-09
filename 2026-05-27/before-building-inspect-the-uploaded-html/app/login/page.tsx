@@ -16,7 +16,7 @@ export default function LoginPage() {
             Open Workspace
           </Link>
           <Link className="button ghost" href="/product#ready">
-            Review Ready Set Grow
+            Review Ready Set Know
           </Link>
         </div>
       </section>
